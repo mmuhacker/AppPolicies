@@ -1,0 +1,899 @@
+<!doctype html><html lang="ar" dir="rtl"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>مترجم Gemini AI</title><link rel="preconnect" href="https://fonts.googleapis.com/"><link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><style>:root {
+      --red-gradient: linear-gradient(45deg, #8B0000 0%, #B22222 25%, #FF4500 50%, #B22222 75%, #8B0000 100%);
+      --gold-gradient: linear-gradient(45deg, #AA8C2C 0%, #D4AF37 25%, #FFDF7E 50%, #D4AF37 75%, #AA8C2C 100%);
+      --purple-gradient: linear-gradient(135deg, #4A148C, #6A1B9A, #7B1FA2, #9C27B0, #AB47BC);
+      --blue-gradient: linear-gradient(135deg, #0D47A1, #1565C0, #1976D2, #2196F3, #42A5F5);
+      --nb-gradient: linear-gradient(45deg, #000000 0%, #121212 25%, #c2c2c2 50%, #121212 75%, #000000 100%);
+      --stro-text-shad: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+      --bg: #0a0e1a;
+      --surface: #111827;
+      --surface1: #ffffff;
+      --surface2: #1a2235;
+      --surface3: #1f2d45;
+      --border: #D4AF37;
+      --border2: #D4AF73;
+      --accent: #00c9ff;
+      --accent2: #0084ff;
+      --text: #e8f4ff;
+      --text1: #ffffff;
+      --text2: #8bacc8;
+      --text3: #4a6a8a;
+      --success: #00e5a0;
+      --error: #ff4a6e;
+      --warning: #ffc947;
+      --radius: 14px;
+      --radius-sm: 8px;
+      
+footer {
+  text-align: center;
+  color: #fff;
+  font-size: 0.85em;
+  font-weight: bold;
+  border-radius: 25px;
+  padding: 8px;
+  background: linear-gradient(145deg, #D4AF37 0%, #1a1205 25%, #2c1f08 50%, #3d2a0a 75%, #D4AF37 100%) padding-box,
+              linear-gradient(90deg, #8a6200 0%, #F5F5F7 20%, #d4af37 40%, #fff 60%, #d4af37 80%, #8a6200 100%) border-box;
+  box-shadow: 0 0 0 1px #e8b84b inset, 0 4px 12px rgba(0, 0, 0, 0.5);
+  border-top: 2px solid var(--border);
+  border-bottom: 5px solid #8a6200;
+  background: linear-gradient(145deg, #D4AF37 0%, #1a1205 25%, #2c1f08 50%, #3d2a0a 75%, #D4AF37 100%) padding-box,
+              linear-gradient(90deg, #8a6200 0%, #F5F5F7 20%, #d4af37 40%, #fff 60%, #d4af37 80%, #8a6200 100%) border-box;
+  box-shadow: 0 0 0 1px #e8b84b inset, 0 4px 12px rgba(0, 0, 0, 0.5);
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 90%;
+  margin: 8px auto 0;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.footer-brand {
+  margin-top: 6px;
+  font-size: 1.5em;
+  font-weight: bold;
+  background: linear-gradient(135deg,
+    #f9e29c 0%, #b8860b 20%, #fff3c4 35%,
+    #8b6914 55%, #f5d576 75%, #7a5a0a 90%, #f9e29c 100%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  animation: shine 6s linear infinite;
+  animation-direction: reverse;
+}
+  }
+
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Tajawal', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    direction: rtl;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 10%, rgba(0,132,255,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 80% 90%, rgba(0,201,255,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 50% 50%, rgba(0,84,160,0.04) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+  }
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px 20px;
+    position: relative;
+    z-index: 1;
+    }
+
+header {
+    text-align: center;
+    margin-bottom: 36px;
+    animation: fadeDown 0.6s ease both;
+    position: relative;
+    padding: 52px 24px 44px;
+    border-radius: var(--radius);
+    border: 1.5px solid var(--border);
+    border-top: 4px solid var(--border);
+    border-bottom: 5px solid #8a6200;
+    overflow: hidden;
+    background-image: url('https://raw.githubusercontent.com/mmuhacker/MuApp-Assets/refs/heads/main/Translator1.jpg');
+    background-size: 130%;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+    animation: fadeDown 0.6s ease both, bgPan 22s ease-in-out infinite alternate;
+  }
+
+header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, 
+      rgba(10, 14, 26, 0.4) 0%, 
+      rgba(10, 14, 26, 0.2) 100%);
+    z-index: 0;
+  }
+
+header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, 
+      transparent 50%, 
+      rgba(212, 175, 55, 0.20) 45%, 
+      rgba(0, 201, 255, 0.30) 55%, 
+      transparent 100%);
+    background-size: 200% 100%;
+    animation: lightSweep 9s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  
+header .logo, header h1, header p {
+    position: relative;
+    z-index: 1;
+  }
+
+@keyframes bgPan {
+    0%   { background-position: 25% 35%; background-size: 130%; }
+    50%  { background-position: 75% 55%; background-size: 140%; }
+    100% { background-position: 40% 65%;
+        background-size: 130%; }
+  }
+
+@keyframes lightSweep {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    }
+
+.logo-icon {
+    width: 20px; height: 20px;
+    background: none;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+
+header h1 {
+    margin-top: 6px;
+    font-size: 5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg,
+    #f9e29c 0%, #b8860b 20%, #fff3c4 35%,
+    #8b6914 55%, #f5d576 75%, #7a5a0a 90%, #f9e29c 100%);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    animation: shine 12s linear infinite;
+  }
+}
+
+header p {
+    color: #dfff37;
+    font-size: 0.95rem;
+    margin-top: 8px; font-weight: 900;
+    }
+
+.card {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.03);
+    animation: fadeUp 0.5s ease both;
+  }
+
+.card-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+.card-title::before {
+    content: '';
+    width: 3px;
+    height: 16px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent2));
+    border-radius: 2px; }
+
+#keys-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 14px;
+    }
+
+.key-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: fadeIn 0.3s ease both;
+    }
+
+.key-index {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text3);
+    min-width: 22px;
+    text-align: center;
+    }
+
+.key-input-wrap {
+    flex: 1;
+    position: relative;
+    }
+
+.key-input {
+    width: 100%;
+    background: var(--surface2);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    padding: 10px 14px 10px 44px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    direction: ltr; text-align: left;
+  }
+
+.key-input:focus {
+    border-color: var(--accent2);
+    box-shadow: 0 0 0 3px rgba(0,132,255,0.12);
+    background: var(--surface3); }
+
+.key-toggle {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text3);
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+    border-radius: 4px;
+  }
+
+.key-toggle:hover {
+    color: var(--accent);
+    }
+
+.btn-delete {
+    background: rgba(255,74,110,0.1);
+    border: 2px solid rgba(255,74,110,0.2);
+    color: var(--error);
+    width: 34px; height: 34px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+.btn-delete:hover {
+    background: rgba(255,74,110,0.2);
+    border-color: rgba(255,74,110,0.4);
+    }
+
+.btn-add {
+    width: fit-content;
+    max-height: 40px;
+    min-width: 200px;
+    max-width: 50%;
+    margin: 10px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 18px;
+    border-radius: 50px;
+    border: 3px solid transparent;
+    border-bottom: 5px solid #8a6200;
+    background: var(--nb-gradient);
+    box-shadow: 0 0 0 1px #e8b84b inset, 0 4px 12px rgba(0,0,0,0.5);
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    line-height: 1;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: var(--stro-text-shad);
+    transition: all 0.1s ease;
+  }
+
+.btn-check-keys {
+    width: fit-content;
+    max-height: 40px;
+    min-width: 200px;
+    max-width: 80%;
+    margin: 10px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 18px;
+    border-radius: 50px;
+    border: 3px solid transparent;
+    border-bottom: 5px solid #8a6200;
+    background: var(--blue-gradient);
+    box-shadow: 0 0 0 1px #e8b84b inset, 0 4px 12px rgba(0,0,0,0.5);
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    line-height: 1;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: var(--stro-text-shad);
+    transition: all 0.1s ease;
+  }
+
+.btn-check-keys:active {
+    transform: translateY(3px);
+    border-bottom: 3px solid #8a6200;
+  }
+
+.keys-check-results {
+    margin-top: 10px;
+    display: none;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+.keys-check-results.show {
+    display: block;
+  }
+
+.key-check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    font-size: 0.82rem;
+    border-bottom: 1px solid rgba(212,175,55,0.1);
+  }
+
+.key-check-item:last-child {
+    border-bottom: none;
+  }
+
+.key-check-item.ok {
+    background: rgba(0,229,160,0.08);
+  }
+
+.key-check-item.fail {
+    background: rgba(255,74,110,0.08);
+  }
+
+.key-check-item.checking {
+    background: rgba(0,201,255,0.08);
+  }
+
+.key-check-item .kci-num {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    font-size: 0.75rem; font-weight: bold;
+    padding: 2px 7px;
+    border-radius: 10px;
+    white-space: nowrap;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+.key-check-item .kci-key {
+    color: var(--text2);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+.key-check-item .kci-status {
+    font-size: 0.8rem;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+.key-check-item.ok .kci-status {
+    color: var(--success);
+  }
+
+.key-check-item.fail .kci-status {
+    color: var(--error);
+  }
+
+.key-check-item.checking .kci-status {
+    color: var(--accent);
+  }
+
+.keys-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: var(--text1);
+    flex-wrap: wrap;
+  }
+
+.active-key-badge {
+    background: var(--gold-gradient);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-shadow: var(--stro-text-shad);
+    border-radius: 20px;
+    padding: 3px 12px;
+    margin-right: auto;
+  }
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--text3);
+    flex-shrink: 0;
+  }
+
+.status-dot.active {
+    background: var(--success);
+    box-shadow: 0 0 6px rgba(0,229,160,0.5);
+  }
+
+.status-dot.error  {
+    background: var(--error);  
+    box-shadow: 0 0 6px rgba(255,74,110,0.5);
+  }
+
+.field-label {
+    font-size: 0.8rem;
+    color: var(--text2);
+    margin-bottom: 8px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+textarea {
+    width: 100%;
+    background: var(--surface2);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-family: 'Tajawal', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    padding: 16px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+
+#source-text {
+    direction: rtl;
+    min-height: 200px;
+    resize: vertical;
+  }
+
+#result-text {
+    direction: ltr;
+    text-align: left;
+    height: 200px;
+    min-height: 200px;
+    max-height: 200px;
+    resize: none;
+    overflow-y: auto;
+    color: var(--text2);
+  }
+
+#result-text.has-content {
+    color: var(--text); }
+
+textarea:focus {
+    border-color: var(--accent2);
+    box-shadow: 0 0 0 3px rgba(0,132,255,0.1);
+    background: var(--surface3); }
+    
+textarea::placeholder {
+    color: var(--text3); }
+
+.controls-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap; }
+
+.char-counter {
+    font-size: 0.78rem;
+    color: #fff;
+    text-align: left;
+    direction: ltr;
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace; }
+
+.btn-translate {
+    width: fit-content;
+    max-height:35px;
+    min-width: 100px;
+    max-width: 50%;
+    margin: 10px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 18px;
+    border-radius: 50px;
+    border: 3px solid transparent;
+    border-bottom: 5px solid #8a6200;
+    background: var(--purple-gradient);
+    box-shadow: 0 0 0 1px #e8b84b inset, 0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(255,255,255,0.15) inset, 0 -2px 6px rgba(0,0,0,0.3) inset;
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    line-height: 1;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: var(--stro-text-shad);
+    transition: all 0.1s ease;
+  }
+  .btn-translate:active:not(:disabled) {
+      transform: translateY(3px);
+      border-bottom: 3px solid #8a6200;
+      box-shadow: 0 0 0 1px #e8b84b inset, 0 2px 6px rgba(0,0,0,0.5); }
+  .btn-translate:hover:not(:disabled)  {
+      transform: translateY(-1px); }
+
+.btn-translate:disabled {
+    opacity: 0.5; cursor:
+    not-allowed; }
+
+.chunk-progress {
+    margin-top: 12px;
+    display: none; }
+
+.chunk-progress.show {
+    display: block; }
+
+.chunk-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--surface3);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px; }
+
+.chunk-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    border-radius: 2px; transition: width 0.4s ease;
+    width: 0%; }
+
+.chunk-progress-text {
+    font-size: 0.78rem;
+    color: var(--text2);
+    font-family: 'JetBrains Mono', monospace;
+    text-align: center; }
+
+.result-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px; }
+
+.btn-copy {
+    width: fit-content;
+    max-height: 35px;
+    min-width: 100px;
+    max-width: 50%;
+    margin: 10px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 40%;
+    margin-top: 10px;
+    padding: 10px 18px;
+    border-radius: 50px;
+    border: 3px solid transparent;
+    border-bottom: 5px solid #8a6200;
+    background: var(--red-gradient);
+    box-shadow: 0 0 0 1px #e8b84b inset, 0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(255,255,255,0.15) inset, 0 -2px 6px rgba(0,0,0,0.3) inset;
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    line-height: 1;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: var(--stro-text-shad);
+    transition: all 0.1s ease;
+  }
+
+.btn-copy:hover  {
+    background: rgba(0,229,160,0.18);
+    border-color: rgba(0,229,160,0.5); }
+
+.btn-copy.copied {
+    background: rgba(0,229,160,0.2); 
+    border-color: var(--success);
+    animation: pulse 0.3s ease; }
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: none; }
+
+.btn-translate.loading .spinner  { display: block; }
+
+.btn-translate.loading .btn-text { display: none; }
+
+#toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--surface3); border: 2px solid var(--border2); color: var(--text);
+    padding: 12px 22px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 100;
+    white-space: nowrap;
+    backdrop-filter: blur(10px);
+  }
+
+#toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0); }
+
+#toast.success {
+    border-color: rgba(0,229,160,0.4);
+    color: var(--success); }
+
+#toast.error {
+    border-color: rgba(255,74,110,0.4);
+    color: var(--error); }
+
+@keyframes fadeDown {
+    from { opacity: 0;
+        transform: translateY(-16px); } to {
+        opacity: 1;
+        transform:
+        translateY(0); } }
+
+@keyframes fadeUp { from {
+        opacity: 0;
+        transform: translateY(16px);  } to { opacity: 1;
+        transform: translateY(0); } }
+
+@keyframes fadeIn { from {
+        opacity: 0;
+        transform: translateX(-8px);  } to { opacity: 1;
+        transform: translateX(0); } }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.04); } 100% { transform: scale(1); } }
+  @keyframes shine {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.card:nth-child(2) {
+    animation-delay: 0.1s; }
+
+.card:nth-child(3) {
+    animation-delay: 0.2s; }
+
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 18px 0; }
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px; }
+
+::-webkit-scrollbar-track {
+    background: var(--surface); }
+
+::-webkit-scrollbar-thumb {
+    background: var(--border2);
+    border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent2); }
+
+  option { background: #1a2235; }
+
+.custom-select-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 200px; }
+
+.custom-select-btn {
+    width: 100%;
+    background: var(--surface2);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.95rem;
+    padding: 11px 38px 11px 16px;
+    outline: none;
+    cursor: pointer;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s; gap: 8px;
+  }
+.custom-select-btn:hover, .custom-select-btn.open {
+    border-color: var(--accent2);
+    box-shadow: 0 0 0 3px rgba(0,132,255,0.1);
+    background: var(--surface3); }
+
+.custom-select-btn .placeholder  {
+    color: var(--text3); }
+
+.custom-select-btn .selected-val {
+    color: var(--text);
+    flex: 1; }
+
+.custom-select-btn .arrow        {
+    color: var(--text3);
+    flex-shrink: 0;
+    transition: transform 0.2s; }
+
+.custom-select-btn.open .arrow   {
+    transform: rotate(180deg); }
+
+.dropdown-panel {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    left: 0;
+    background: var(--surface2);
+    border: 2px solid var(--border2);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    z-index: 50;
+    overflow: hidden;
+  }
+
+.dropdown-panel.open {
+    display: block;
+    animation: fadeUp 0.15s ease both; }
+
+.dropdown-search-wrap {
+    padding: 10px 10px 6px; position: relative; }
+
+.dropdown-search {
+    width: 100%;
+    background: var(--surface3);
+    border: 2px solid var(--border2);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.9rem;
+    padding: 8px 36px 8px 12px;
+    outline: none;
+    direction: rtl;
+    transition: border-color 0.2s;
+  }
+
+.dropdown-search:focus {
+    border-color: var(--accent2); }
+
+.dropdown-search::placeholder {
+    color: var(--text3); }
+
+.dropdown-search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text3);
+    pointer-events: none;
+    margin-top: 3px; }
+
+.dropdown-list {
+    max-height: 240px;
+    overflow-y: auto;
+    padding: 4px 0 6px; }
+
+.dropdown-item {
+    padding: 9px 14px;
+    cursor: pointer;
+    font-size: 0.92rem;
+    color: var(--text2);
+    transition: background 0.15s, color 0.15s;
+    direction: rtl; }
+
+.dropdown-item:hover {
+    background: var(--surface3);
+    color: var(--text); }
+
+.dropdown-item.selected {
+    color: var(--accent);
+    background: rgba(0,201,255,0.07);
+    font-weight: 600; }
+
+.dropdown-item.hidden   {
+    display: none; }
+
+.dropdown-empty {
+    padding: 14px;
+    color: var(--text3);
+    font-size: 0.88rem;
+    text-align: center;
+    display: none; }
+
+@media (max-width: 600px) {
+    header h1 { font-size: 1.5rem; }
+
+.controls-row {
+    flex-direction: column; }
+
+.btn-translate {
+    width: 100%;
+    justify-content: center; }
+
+.custom-select-wrap {
+    min-width: 100%; }
+  }</style><div id="toast"></div><div class="container"><header><div class="logo"><div class="logo-icon">🌐</div><h1>مترجم Gemini AI</h1></div><p>ترجمة ذكية ودقيقة مدعومة بتقنية Gemini</header><div class="card"><div class="card-title">مفاتيح Gemini API</div><div id="keys-list"></div><button class="btn-add" onclick="addKey()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> إضافة مفتاح جديد</button> <button class="btn-check-keys" onclick="checkAllKeys()">🔍 فحص صلاحية جميع المفاتيح</button><div class="keys-check-results" id="keys-check-results"></div><div class="keys-status"><span class="status-dot" id="status-dot"></span> <span id="status-text">لم يتم إضافة أي مفاتيح بعد</span> <span class="active-key-badge" id="active-key-badge" style="display:none"></span></div></div><div class="card"><div class="card-title">الترجمة</div><div class="field-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> النص المصدر</div><textarea id="source-text" placeholder="أدخل النص المراد ترجمته هنا..." oninput="updateCharCount()">
+      </textarea><div class="char-counter" id="char-count">0 حرف</div><div class="divider"></div><div class="controls-row"><div class="custom-select-wrap" id="lang-select-wrap"><button class="custom-select-btn" id="lang-select-btn" type="button" onclick="toggleDropdown()"><span id="lang-display" class="placeholder">— اختر لغة الترجمة —</span> <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="dropdown-panel" id="lang-dropdown"><div class="dropdown-search-wrap"><input class="dropdown-search" id="lang-search" placeholder="ابحث عن لغة..." oninput="filterLangs(this.value)" autocomplete="off"> <span class="dropdown-search-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span></div><div class="dropdown-list" id="lang-list"></div><div class="dropdown-empty" id="lang-empty">لا توجد نتائج</div></div></div><button class="btn-translate" id="translate-btn" onclick="doTranslate()"><div class="spinner"></div><span class="btn-text"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/></svg> ترجم الآن</span></button></div><div class="chunk-progress" id="chunk-progress"><div class="chunk-progress-bar"><div class="chunk-progress-fill" id="chunk-progress-fill"></div></div><div class="chunk-progress-text" id="chunk-progress-text"></div></div><div class="divider"></div><div class="result-header"><div class="field-label" style="margin-bottom:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg> النص المترجم</div><button class="btn-copy" id="copy-btn" onclick="copyResult()" style="display:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> <span id="copy-text">نسخ</span></button></div><textarea id="result-text" placeholder="ستظهر الترجمة هنا..." readonly>
+      </textarea></div><footer>تطوير: Muhannad Daher — C5_C3c<div class="footer-brand">Madarik Ai © 2026</div></footer></div><script>var buildLangList,toggleDropdown,closeDropdown,selectLang,filterLangs,addKey,removeKey,updateKey,toggleVisibility,saveKeys,renderKeys,getValidKeys,updateStatus,checkAllKeys,splitIntoChunks,doTranslate,callGemini,showResult,setLoading,updateCharCount,copyResult,showToast,escHtml,eyeIcon,eyeOffIcon,trashIcon;const vmkj_171023=function(e,t){let p,n,i={__proto__:null,buildLangList:function(){return U(arguments,new.target,void 0!==buildLangList?buildLangList:void 0,{_$whFvHM:[LANGS,selectLang],_$YbRseW:void 0,_$jau7yv:0,_$XUjbMW:[1,0]},0,this,72)},toggleDropdown:function(){return U(arguments,new.target,void 0!==toggleDropdown?toggleDropdown:void 0,{_$whFvHM:[closeDropdown],_$YbRseW:void 0,_$jau7yv:0},1,this,72)},closeDropdown:function(){return U(arguments,new.target,void 0!==closeDropdown?closeDropdown:void 0,{_$whFvHM:[filterLangs],_$YbRseW:void 0,_$jau7yv:0},2,this,72)},selectLang:function(e,t){return U(arguments,new.target,void 0!==selectLang?selectLang:void 0,{_$whFvHM:Object.defineProperties({},{0:{value:closeDropdown,writable:!0,enumerable:!0},1:{get:function(){return selectedLang},enumerable:!0,set:function(e){selectedLang=e}}}),_$YbRseW:void 0,_$jau7yv:0},3,this,72)},filterLangs:function(e){return U(arguments,new.target,void 0!==filterLangs?filterLangs:void 0,void 0,4,this,72)},addKey:function(){return U(arguments,new.target,void 0!==addKey?addKey:void 0,{_$whFvHM:[renderKeys,updateStatus],_$YbRseW:void 0,_$jau7yv:0},7,this,72)},removeKey:function(e){return U(arguments,new.target,void 0!==removeKey?removeKey:void 0,{_$whFvHM:Object.defineProperties({},{0:{get:function(){return currentKeyIndex},enumerable:!0,set:function(e){currentKeyIndex=e}},1:{value:renderKeys,writable:!0,enumerable:!0},2:{value:saveKeys,writable:!0,enumerable:!0},3:{value:updateStatus,writable:!0,enumerable:!0}}),_$YbRseW:void 0,_$jau7yv:0},8,this,72)},updateKey:function(e,t){return U(arguments,new.target,void 0!==updateKey?updateKey:void 0,{_$whFvHM:[saveKeys,updateStatus],_$YbRseW:void 0,_$jau7yv:0},9,this,72)},toggleVisibility:function(e){return U(arguments,new.target,void 0!==toggleVisibility?toggleVisibility:void 0,{_$whFvHM:[eyeIcon,eyeOffIcon],_$YbRseW:void 0,_$jau7yv:0},10,this,72)},saveKeys:function(){return U(arguments,new.target,void 0!==saveKeys?saveKeys:void 0,void 0,11,this,72)},renderKeys:function(){return U(arguments,new.target,void 0!==renderKeys?renderKeys:void 0,{_$whFvHM:[escHtml,eyeIcon,trashIcon],_$YbRseW:void 0,_$jau7yv:0},12,this,72)},getValidKeys:function(){return U(arguments,new.target,void 0!==getValidKeys?getValidKeys:void 0,void 0,13,this,72)},updateStatus:function(){return U(arguments,new.target,void 0!==updateStatus?updateStatus:void 0,{_$whFvHM:Object.defineProperties({},{0:{get:function(){return currentKeyIndex},enumerable:!0,set:function(e){currentKeyIndex=e}},1:{value:getValidKeys,writable:!0,enumerable:!0}}),_$YbRseW:void 0,_$jau7yv:0},14,this,72)},checkAllKeys:function(){if(new.target)throw new TypeError;return U(arguments,new.target,void 0,{_$whFvHM:[getValidKeys],_$YbRseW:void 0,_$jau7yv:0},15,this,72)},splitIntoChunks:function(e,t){return U(arguments,new.target,void 0!==splitIntoChunks?splitIntoChunks:void 0,void 0,16,this,72)},doTranslate:function(){if(new.target)throw new TypeError;return U(arguments,new.target,void 0,{_$whFvHM:Object.defineProperties({},{0:{value:CHUNK_SIZE,writable:!0,enumerable:!0},1:{value:callGemini,writable:!0,enumerable:!0},2:{get:function(){return currentKeyIndex},enumerable:!0,set:function(e){currentKeyIndex=e}},3:{value:getValidKeys,writable:!0,enumerable:!0},4:{get:function(){return selectedLang},enumerable:!0,set:function(e){selectedLang=e}},5:{value:setLoading,writable:!0,enumerable:!0},6:{value:showResult,writable:!0,enumerable:!0},7:{value:showToast,writable:!0,enumerable:!0},8:{value:splitIntoChunks,writable:!0,enumerable:!0},9:{value:updateStatus,writable:!0,enumerable:!0}}),_$YbRseW:void 0,_$jau7yv:0,_$XUjbMW:[1,0,0,0,0,0,0,0,0,0]},17,this,72)},callGemini:function(e,t,p){if(new.target)throw new TypeError;return U(arguments,new.target,void 0,void 0,18,this,72)},showResult:function(e){return U(arguments,new.target,void 0!==showResult?showResult:void 0,void 0,19,this,72)},setLoading:function(e){return U(arguments,new.target,void 0!==setLoading?setLoading:void 0,void 0,20,this,72)},updateCharCount:function(){return U(arguments,new.target,void 0!==updateCharCount?updateCharCount:void 0,void 0,21,this,72)},copyResult:function(){return U(arguments,new.target,void 0!==copyResult?copyResult:void 0,{_$whFvHM:[showToast],_$YbRseW:void 0,_$jau7yv:0},22,this,72)},showToast:function(e){return U(arguments,new.target,void 0!==showToast?showToast:void 0,{_$whFvHM:Object.defineProperties({},{0:{get:function(){return toastTimer},enumerable:!0,set:function(e){toastTimer=e}}}),_$YbRseW:void 0,_$jau7yv:0},23,this,72)},escHtml:function(e){return U(arguments,new.target,void 0!==escHtml?escHtml:void 0,void 0,24,this,72)},eyeIcon:function(){return U(arguments,new.target,void 0!==eyeIcon?eyeIcon:void 0,void 0,25,this,72)},eyeOffIcon:function(){return U(arguments,new.target,void 0!==eyeOffIcon?eyeOffIcon:void 0,void 0,26,this,72)},trashIcon:function(){return U(arguments,new.target,void 0!==trashIcon?trashIcon:void 0,void 0,27,this,72)}},r="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:void 0,o=e===r&&t;if(o){const e={__proto__:null,buildLangList:()=>buildLangList,toggleDropdown:()=>toggleDropdown,closeDropdown:()=>closeDropdown,selectLang:()=>selectLang,filterLangs:()=>filterLangs,addKey:()=>addKey,removeKey:()=>removeKey,updateKey:()=>updateKey,toggleVisibility:()=>toggleVisibility,saveKeys:()=>saveKeys,renderKeys:()=>renderKeys,getValidKeys:()=>getValidKeys,updateStatus:()=>updateStatus,checkAllKeys:()=>checkAllKeys,splitIntoChunks:()=>splitIntoChunks,doTranslate:()=>doTranslate,callGemini:()=>callGemini,showResult:()=>showResult,setLoading:()=>setLoading,updateCharCount:()=>updateCharCount,copyResult:()=>copyResult,showToast:()=>showToast,escHtml:()=>escHtml,eyeIcon:()=>eyeIcon,eyeOffIcon:()=>eyeOffIcon,trashIcon:()=>trashIcon};for(const t in i)n=Object.getOwnPropertyDescriptor(r,t),(!n||"value"in n&&n.value!==e[t]())&&(o=!1)}if(o)for(const e in i)if(n=Object.getOwnPropertyDescriptor(r,e),n&&n.configurable&&("get"in n||void 0!==n.value))Object.defineProperty(r,e,{value:i[e],writable:!0,enumerable:!0,configurable:!1});else{if(!(!n||n.configurable||n.writable&&n.enumerable))throw new SyntaxError("Identifier '"+e+"' has already been declared");r[e]=i[e]}else{(()=>{buildLangList=i.buildLangList,toggleDropdown=i.toggleDropdown,closeDropdown=i.closeDropdown,selectLang=i.selectLang,filterLangs=i.filterLangs,addKey=i.addKey,removeKey=i.removeKey,updateKey=i.updateKey,toggleVisibility=i.toggleVisibility,saveKeys=i.saveKeys,renderKeys=i.renderKeys,getValidKeys=i.getValidKeys,updateStatus=i.updateStatus,checkAllKeys=i.checkAllKeys,splitIntoChunks=i.splitIntoChunks,doTranslate=i.doTranslate,callGemini=i.callGemini,showResult=i.showResult,setLoading=i.setLoading,updateCharCount=i.updateCharCount,copyResult=i.copyResult,showToast=i.showToast,escHtml=i.escHtml,eyeIcon=i.eyeIcon,eyeOffIcon=i.eyeOffIcon,trashIcon=i.trashIcon})()}const l="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:void 0,a={__proto__:null},u=a._$6eOjVl||(a._$6eOjVl={_$1H5a1H:void 0,_$KJbdJU:void 0,_$KxecoW:void 0,_$AftfMj:void 0,_$IDQ1LX:void 0,_$ngoT5Z:void 0,_$fv97jm:void 0,_$rx1ws9:void 0}),c=e===l?l:a,d=function(e,t,p){e[t]=p},f=function(e,t){return delete e[t]},s=function(e,t,p,n){if(""===p){if(t)switch(n){case 1:return{""(t){"use strict";return e(this,arguments)}}[""];case 2:return{""(t,p){"use strict";return e(this,arguments)}}[""];case 3:return{""(t,p,n){"use strict";return e(this,arguments)}}[""];default:return{""(){"use strict";return e(this,arguments)}}[""]}switch(n){case 1:return{""(t,p=void 0){return e(this,arguments)}}[""];case 2:return{""(t,p,n=void 0){return e(this,arguments)}}[""];case 3:return{""(t,p,n,i=void 0){return e(this,arguments)}}[""];default:return{""(t=void 0){return e(this,arguments)}}[""]}}if(t)switch(n){case 1:return{[p](t){"use strict";return e(this,arguments)}}[p];case 2:return{[p](t,p){"use strict";return e(this,arguments)}}[p];case 3:return{[p](t,p,n){"use strict";return e(this,arguments)}}[p];default:return{[p](){"use strict";return e(this,arguments)}}[p]}switch(n){case 1:return{[p](t,p=void 0){return e(this,arguments)}}[p];case 2:return{[p](t,p,n=void 0){return e(this,arguments)}}[p];case 3:return{[p](t,p,n,i=void 0){return e(this,arguments)}}[p];default:return{[p](t=void 0){return e(this,arguments)}}[p]}},j=function(e,t,p,n){if(t)switch(n){case 1:return{async[p](t){"use strict";let p=e(this,arguments);for(;p.a;){let e,t=1;try{e=await p.v}catch(p){t=2,e=p}p.s(t,e)}return p.v}}[p];case 2:return{async[p](t,p){"use strict";let n=e(this,arguments);for(;n.a;){let e,t=1;try{e=await n.v}catch(p){t=2,e=p}n.s(t,e)}return n.v}}[p];case 3:return{async[p](t,p,n){"use strict";let i=e(this,arguments);for(;i.a;){let e,t=1;try{e=await i.v}catch(p){t=2,e=p}i.s(t,e)}return i.v}}[p];default:return{async[p](){"use strict";let t=e(this,arguments);for(;t.a;){let e,p=1;try{e=await t.v}catch(t){p=2,e=t}t.s(p,e)}return t.v}}[p]}switch(n){case 1:return{async[p](t,p=void 0){let n=e(this,arguments);for(;n.a;){let e,t=1;try{e=await n.v}catch(p){t=2,e=p}n.s(t,e)}return n.v}}[p];case 2:return{async[p](t,p,n=void 0){let i=e(this,arguments);for(;i.a;){let e,t=1;try{e=await i.v}catch(p){t=2,e=p}i.s(t,e)}return i.v}}[p];case 3:return{async[p](t,p,n,i=void 0){let r=e(this,arguments);for(;r.a;){let e,t=1;try{e=await r.v}catch(p){t=2,e=p}r.s(t,e)}return r.v}}[p];default:return{async[p](t=void 0){let p=e(this,arguments);for(;p.a;){let e,t=1;try{e=await p.v}catch(p){t=2,e=p}p.s(t,e)}return p.v}}[p]}},U=function(){"use strict";var e=Proxy,t=(Object.getOwnPropertyNames,Reflect.set),p=WeakMap.prototype.set,n=Array.prototype[Symbol.iterator],i=Reflect.ownKeys,r=WeakSet.prototype.has,o=Reflect.apply,U=Reflect.construct,I=Object.defineProperty,h=Function.prototype.call,y=(Object.getOwnPropertySymbols,WeakMap.prototype.get),v=Object.setPrototypeOf,w=Reflect.deleteProperty,S=(Reflect.defineProperty,WeakMap.prototype.has),T=Reflect.get,q=Object.getOwnPropertyDescriptor,b=Object.create,g=Function.prototype.apply,_=WeakSet.prototype.add,$=Object.getPrototypeOf;let k=["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","4qwloG0pppTT0rvUA8vxU8ghm4a8jpqp+p0S","4qwloG0pppTTwevUA8v/Cpa8jpqp+p0S","4qwloG0pppTTwevUA8vlBda8jpqp+p0S"];var m=Uint8Array,Z=DataView,L=String.fromCharCode;let W=["4qwNoG0pppUTykWcZSzmu0xPZY2T0cH48wzcfm2lW4UXNLjhGmucGa0hI4TdI4ptpp0jppippdpppUpjpdpIppqwI4TSpGh0okxHUpn3p+Uj","4qwjZ20IIpdBIjRoGkUKfnilWL2T0cH48wTlfa0xepMyIpPBZv/cIpEvinxKfdUdfSbmunKcZ6dTSYW7fnyJfFzqfnKcZ6dTjY5EuUqjIjEB2Yb4fSblZCKEuSzVIjRmZSyL2J/PZnFTwY5PuSyLfNdTy65c8k5wZv/Jfn/JI4pTwYbrivxEivqT0cH48wRPGafPWdUniNj4fn/BdvPEZSXvpdwejtUwHUkFpipyKpSXphpyKpS7jopjxpRhW6CpjudjhUahpsijGMpyKpS7jopjxpRhW6CpjudjhUahpsijGDU0qUFvqUFFUpNFp8T0KpS7ja37jfpjUpNFpZTyBpQqpDTyWDTyyIIBjGdI8Wh0UpzrKpS7juh0UpkhpOTy8k7ppoUwqUzHUpkhpOTyUpz+UpkhplL0p6C7jipyZAUwI4ptpUqpjUqjI4TtpUitp4qII40SjUq0jUqyI4TtpUiSjUqpI4GtpUqjjUitjpitjdqII4TSjUitpditpUitpditp4qIjUqwI4TSI40SI4GtpUqwjUitpUitpdiSI4iSI42tIpqRI40tppqpI4MtI4itppqGI4ptjditppqjI4JSI4ptwUitw4ijpppIppit0dqpI4BtpdiXkIiB1mPId0fGzcfvNSfruk5vpU/3ZkU=","4qwNoG0ppp4T0S5AilzVfn/JIjx6fN5yZSzVfn/Jd6cRfpUnZSyrf7KLfny7ivUtpdU1fYbmuNGtpj3BjpqpxpTS8pqjlUdtpMpyI4WrI4k0pUfhI4XpjdqyZUqp+p0S","4qwNoG0IpphT0YWqiNWLaScLupUGuSb6fvxcIjjLfnxcil5cfpUefSyJiNWcupU1uYyqunFT0cH48wdhGLuciUqISUqprpGtpkUSxpTtpNUtpVh0I4Ihp4qw8pq08p0ppp0popQfivdtjMpyI4RrjAUw","4qwaoG0IpPMTy65c8k5wZv/Jfn/JIjfJZJxAuvz7dvyLfdqpIjjEZYWqun5c24UXNLjhWwRcGwT/I40TwY5PuSyLfNdTI6fPZkzcIjRmZSyL2JxE2ldTwk5AfvuqfdUG3ScBfSzrI4TT0cH48SWBeS0xWyMtppqpI4ptppitpdqII4pSI4GjpppIppqyI40SjUitppqSI42SI40tpUqpjUqwpdpppUptjdqjI40tppqTjUqRI4MtpditI4qIjUqjjU0jppTpjUijpdpIppwejtUw8GdI8TpyZqdI8k7pjnO0pmZhpOUw8km0p6CpjnO0p6PHUpzrKpShplm0p6m8jtTyKUSpjnOhpOTymU5H4pXJpXM0kwPdnU==","4qwNoG00pChT0S5AilzVfn/JIjEm2YzPuSzyZSzVfn/JIpfB3NitpdUe3vz/tNRAu4UXivxP2lWeinKcI0T1TIpUTIpUTIpH2ljPZCjmZSyL2LJC3vz/tncrfSzhTmhTmp0HtlW4inhgICpUTIpUTIpUQS5EuCjmZSyL2LJC3vz/tncr2kzJtNu7iNpCQUMUTIpUTIpUTIpUQScr2kzJTScBQXRDfNBVIyiCTSWqiNWLQXRDfNBV3n/4uNdCTk5/2SFbT6jP2lWlZlRBTCjvinxKfaJCIp/c2vWTuSKqIkhCICpUTIpUTIpUTIpUTkjqinWc3SbqfSz7QXRjXNEPTWCmviUUdz0rtChCTSbr3n/4uNdbT6z4fSyJfFVc8XUTNC4UuSPE27/vinxKfXBCTIHgICpUTIpUTIpUTIpHi6zJuSbrTScBQXRJZvu6ZSFVIyhCTSWqiNWLQXRDfNBVuSb6fvxcTCjAZYWq3nWDQXRJZvu6ZSzn3NWEiYcq3N5/1pPI1XTUuScJZSFbTVCcvtmfPbC6vt0Av1NiDVYjv1oiMXTgIp/c8nzRivbrI4pT6U0HtvRKuk5AZmh1TIpUTIpUTIpHtv5Eumh1TIpUTIpUTIpHi6zJuSbrTSWqiNWLQXRCuShVfSzqfN5cTCjAZYWq3nWDQXR7fnKAuYztfNBMIIdETCjJ3N5qfaJCv1liqWYjTmhT0657iNWMXnWAZUUUQIbCuN5JZvhgICpUTIpUTpUX3n/rfNRTz0KGIjRoGkULiaiLea2TyYy42Szrf0WM3nxB6p0tppqpI4pSI40tpUqwI40tpUqII4dtjditpUqSI40tp4QGi4iwLSGtj4QGi4qjjUQGi4qTpHxmpdppjpptppqwI40SpHxmI4MwLSGtpdiwLSGtI4QGi4qjjUQGi4qGpHxmI40SpHxmI4JwLSGjpdp0ppqQI4pSpHxmIxpwLSGtpdiwLSGt0dQGi40IppdpI4HtppiwLSGt04QGi4qFjU0pppTpjUqnI4Ttp4qjjUwej1d0xpRhlUXpjnOFpZTylUXppoUwqUN8jtUwUpzBISa8jSXhp4PBlU5BotUwUpn3pUPBlU5BrpGTfWh0ftUwISa8jSXhp4PBlU5BoTpyYUTTfWh0ftUwISa8jS5HUpn3pUPBlU5BUpkhplL0p6C7jipyZAUw","4qwNoG00ppdTjYVc8dU3ZlREfvcrinxRZY5c8p4MrpQhjZUwgpnMpditppqpI40tpdi=","4qwNoG0IppiTjYVc8dUGZSzrfl5MI4MGI4ptppqjI4TwvvGSrpWh8Tpyf1Uj","4qwNoG0IppdTSYb73nuEZYyqXn/BfNUTkYWK26RcZ65tfNcRZY5c8phpLUXhplPHf1UjI4ptppqpI4pjpppwppQ1i4i=","4qwNoG0IppiTykWcuy5EZnzAuNdwJp2tpU4tppqpI40tpUqIj+d0rpepjipyYU1Mpd==","4qwNoG0IppdTSYb73nuEZYyqXn/BfNUTkYWK26RcZ65tfNcRZY5c8phpLUXhplPHf1UjI4ptppqpI4pjpUpyppQ1i4i=","4qwNoG0IppiTykWcuy5EZnzAuNdwCjGtpU4tppqpI40tpUqIj+d0rpepjipyYU1Mpd==","4qwNoG0IppiTykWcuy5EZnzAuNdwbp0tpU4tppqpI40tpUqIj+d0rpepjipyYU1Mpd==","4qwNoG0pppMT0cH48wcCWwGJG4UXivxP2lWG3NWJIpx7fnKAuYFTIkWMZl2tp5dpI4wejpqpop0pppTp8pqjxpTS8pqIlUdtphpyI45rI4SMpdi=","4qwNoG0pppp011UjjUi=","4qwNoG0ppjpT0cH48wT/WmyYfdUXivxP2lWG3NWJIpx7fnKAuYFTwSWA2SccfpqjIjRoGkUKGw0LfS0TwWYSvtQiDUUnuSzhu0WAZ65cZ6d2pGh0okm0p6m8jTpyZAUwoWh0Upkhp4qpI4pjpppIppqjjUqII4GtjpqjjU0jppTpI4itj4i=","4qwkoG0pppdUIjRoGkU7eaixfYFT0cH48wF4GaWBidUdfSbmunKcZ6dTkSucu0zqfnKcZ65I8FcBIjjmZlj/tnRJZUqjIjRmZlj/tN5c8kdT0YWqiNWLaScLupUSin5BIpxmZljEfndTRVC+viFUv1ofPWYSvtQiDCwC6RGTy65c8k5wZv/Jfn/JIj5LfN5F3nKcZlzJI4HwJp2tpBMpI4wejpqIfU0ppp0pfU0jppTpEpdtpqdIj6Utpbh0I4XpjdqyZUqjvpdtp1d0I4t0pUfhI4Q8jpqSUpFtjnhtpuU0I4yHI4jhI4o0pUfhI4m8jpqRUpFtjnhtpoUwj64tpuh0I4+ppdqtgpGSEpdtwTpyI4K+jMpyI49pjdqQYUTtpAUwjU==","4qwNoG0ppPUT0S5AilzVfn/JIjx6fN5yZSzVfn/Jd6cRfpUn2YzLunxJtN5c8kdtpdUG2vzqfnWJI4pTyYzhfnWwZvKVin/BIpPmZlj/IjRL3SblzSbP2ldT1WC+viFUviZiqbCrTWC6viafPVCKIp/LunWmfNWLI4ThppqpLUdtp1d0I4w0pUfhI4k8jpqIUpFtpvhtpudjI4I7jdqpxpTS8pq0UpFtjnhtpQUwj+d0I4w0pUfhI4Z8jpqkUpFtpvhtpoUwj64jpppwpWh0I468jpq1UpFtI/MII4thp4i=","4qwNoG0pppiT0cH48SdvGYWmepUpIjRmZSyL2J/PZnFGI4ppI4wejp0pppTpopqjlUdtpMpjjAUw"];const x="bigint",Y=[];let C=0;const K=function(){return arguments},G=function(e){if("string"!=typeof e)return NaN;let t=+e;return t>=0&&t%1==0&&String(t)===e?t:NaN},N=function(e){return!isNaN(e)&&e>=0},F=function(e,t){if(t in e.deletedArgs)return;if(t in e.extraArgs)return e.extraArgs[t];if(t>=e.entryArgCount)return;let p=null!==e.paramSlotOf?e.paramSlotOf[t]:void 0;return p>=0?e.paramEnv._$whFvHM[p]:e.args[t]},z=function(e,t){return!(t in e.deletedArgs)&&(t in e.extraArgs||t<e.entryArgCount&&t in e.args)},P=function(e,t,p){if("length"===t)return this.argsLength;if("callee"===t)return this.calleeDeleted?void 0:this.calleeValue;if(t===Symbol.toStringTag)return"Arguments";let n=G(t);return N(n)?n in this.unmappedIndices?T(e,t,p):F(this,n):T(e,t,p)},R=function(e,p,n){if("length"===p)return!!this.lengthWritable&&(this.argsLength=n,e.length=n,!0);if("callee"===p)return!!t(e,p,n)&&(this.calleeValue=n,this.calleeDeleted=!1,!0);let i=G(p);if(N(i)){if(i in this.unmappedIndices)return t(e,p,n);let r=q(e,String(i));if(r&&!r.writable)return!1;if(i in this.deletedArgs)delete this.deletedArgs[i],this.extraArgs[i]=n;else if(i<this.entryArgCount){let e=null!==this.paramSlotOf?this.paramSlotOf[i]:void 0;e>=0?this.paramEnv._$whFvHM[e]=n:this.args[i]=n}else this.extraArgs[i]=n;return!0}return t(e,p,n)},E=function(e,t){if("length"===t)return!0;if("callee"===t)return!this.calleeDeleted;if(t===Symbol.toStringTag)return!1;let p=G(t);return N(p)?String(p)in e||z(this,p):t in e},A=function(e,t,p){if("length"===t)return"value"in p&&(this.argsLength=p.value),"writable"in p&&(this.lengthWritable=p.writable),I(e,t,p),!0;if("callee"===t)return"value"in p&&(this.calleeValue=p.value),this.calleeDeleted=!1,I(e,t,p),!0;let n=G(t);if(N(n)){let t,i="get"in p||"set"in p,r=q(e,String(n)),o=n in this.unmappedIndices?r?r.value:void 0:F(this,n),l=!r||!1!==r.writable,a=!r||!1!==r.enumerable,u=!r||!1!==r.configurable;if(i)t=p,this.unmappedIndices[n]=1,n in this.extraArgs&&delete this.extraArgs[n],n in this.deletedArgs&&delete this.deletedArgs[n];else{if(t={value:"value"in p?p.value:o,writable:"writable"in p?p.writable:l,enumerable:"enumerable"in p?p.enumerable:a,configurable:"configurable"in p?p.configurable:u},"value"in p&&!(n in this.unmappedIndices))if(n<this.entryArgCount&&!(n in this.deletedArgs)){let e=null!==this.paramSlotOf?this.paramSlotOf[n]:void 0;e>=0?this.paramEnv._$whFvHM[e]=p.value:this.args[n]=p.value}else this.extraArgs[n]=p.value,n in this.deletedArgs&&delete this.deletedArgs[n];"writable"in p&&!1===p.writable&&(this.unmappedIndices[n]=1,n in this.extraArgs&&delete this.extraArgs[n],n in this.deletedArgs&&delete this.deletedArgs[n])}return I(e,String(n),t),!0}return I(e,t,p),!0},J=function(e,t){if("callee"===t)return!!w(e,t)&&(this.calleeDeleted=!0,!0);let p=G(t);if(N(p)){let n=q(e,String(p));return(!n||!1!==n.configurable)&&(p in this.unmappedIndices&&delete this.unmappedIndices[p],p<this.entryArgCount?this.deletedArgs[p]=1:delete this.extraArgs[p],delete e[t],!0)}let n=q(e,t);return(!n||!1!==n.configurable)&&(delete e[t],!0)},M=function(e){let t=this.entryArgCount;for(let p=0;p<t;p++)!(p in this.deletedArgs)&&!q(e,String(p))&&I(e,String(p),{value:F(this,p),writable:!0,enumerable:!0,configurable:!0});for(let t in this.extraArgs)!q(e,t)&&I(e,t,{value:this.extraArgs[t],writable:!0,enumerable:!0,configurable:!0});return Object.preventExtensions(e),!0},H=function(e,t){if("callee"===t){if(this.calleeDeleted)return;return q(e,"callee")}if("length"===t)return q(e,"length");let p=G(t);if(N(p)){if(p in this.unmappedIndices)return q(e,t);if(z(this,p)){let t=q(e,String(p));return{value:F(this,p),writable:!t||t.writable,enumerable:!t||t.enumerable,configurable:!t||t.configurable}}return q(e,t)}let n=q(e,t);return n||void 0},V=function(e,t){for(let p=0;p<e.length;p++)if(e[p]===t)return!0;return!1},B=function(e){let t=[],p=this.entryArgCount;for(let e=0;e<p;e++)!(e in this.deletedArgs)&&(t[t.length]=String(e));for(let e in this.extraArgs)!V(t,e)&&(t[t.length]=e);t[t.length]="length",!this.calleeDeleted&&(t[t.length]="callee");let n=i(e);for(let e=0;e<n.length;e++)!V(t,n[e])&&(t[t.length]=n[e]);return t},X=function(e){throw e};var O=[8,0,0,0,0,0,0,0,0,5,0,0,0,0,0,21,0,0,14,0,39,20,0,0,0,24,0,36,22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,34,0,0,0,0,0,0,0,0,2,0,6,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,33,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,26,19,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,41,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,27,0,0,0,0,0,0,0,0,0,0,30,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,16,0,0,0,0,0,0,0,37,0,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,29,35,0,25,0,0,28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,31,0,0,0,0,0,0,0,0,0,0,0,0,23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,17,0,12,40,0,0,0,0];let D={__proto__:WeakMap.prototype},Q={__proto__:WeakSet.prototype};let ee=function(){},te=function(){},pe=WeakMap,ne=WeakSet;function ie(){return U(pe,[],ee)}function re(){return U(ne,[],te)}ee.prototype=D,te.prototype=Q;let oe=re(),le=0,ae=re();const ue=ie();function ce(e,t){ue.set(e,t)}function de(e){return ue.has(e)}let fe=ie(),se=Array.prototype[Symbol.iterator],je=Symbol.iterator,Ue=null;try{Ue=$(async function*(){}).prototype}catch(e){}let Ie=Ue&&Ue.next,he=Ue&&Ue.return,ye=Ue&&Ue.throw;function ve(e,t,p){try{I(e,t,p)}catch(e){}}function we(e,t,p,n){let i=new Array(p),r=!1;for(let o=0;o<p;o++){let p=void 0===n?e[t+o]:n(e[t+o]);0!==le&&p&&"object"==typeof p&&oe.has(p)&&(r=!0),i[o]=p}if(!r)return i;let o=[];for(let e=0;e<p;e++){let t=i[e];if(t&&"object"==typeof t&&oe.has(t)){le--;let e=t.value;if(Array.isArray(e))for(let t=0;t<e.length;t++)o[o.length]=e[t]}else o[o.length]=t}return o}function Se(e){return"object"==typeof e||"function"==typeof e}function Te(e){if(null===e||"object"!=typeof e&&"function"!=typeof e)throw new TypeError("Iterator result "+e+" is not an object")}function qe(e){let t=e.done;return{done:t,value:t?e.value:void 0}}const be=Array.isArray;function ge(e){let t=e.length,p=new Array(t);for(let n=0;n<t;n++)p[n]=e[n];return p}function _e(e){return"function"==typeof e&&e.prototype?e.prototype:e}function $e(t,p,r,y,w,S,T,_,$){var k,m,Z,L,W,G,N,F,z,V,D,Q,ee,te,pe,ne,re,de,Ue,Ie,he,ye,qe,me,Ze,Le,We,xe,Ye,Ce,Ke,Ge,ze,Pe,Ae,Je,He,Be,Xe,Oe,De,Qe,et,tt,pt,nt,it,rt,ot,lt,at=0,ut=0;if(void 0===T){switch(at=0,m=(k=(t[32]||0)+(t[33]||0))<=8?[void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0]:k<=24?[void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0]:new Array(k+8).fill(void 0),at=k,Z=Ne(t[32],t[33]),3&(L=Fe(t[32],t[33]))){case 0:G=t[23*Z+L&31],W=t[7*Z+L&31],N=t[16*Z+L&31]||Y,F=t[3*Z+L&31]||Y;break;case 1:W=t[7*Z+L&31],N=t[16*Z+L&31]||Y,F=t[3*Z+L&31]||Y,G=t[23*Z+L&31];break;case 2:N=t[16*Z+L&31]||Y,F=t[3*Z+L&31]||Y,G=t[23*Z+L&31],W=t[7*Z+L&31];break;default:F=t[3*Z+L&31]||Y,G=t[23*Z+L&31],W=t[7*Z+L&31],N=t[16*Z+L&31]||Y}switch(z=m,ut=0,V=G.length>>1,D=(27703*t[32]^41121*t[33]^51333*V^58839*W.length)>>>0&3){case 1:Q=0,ee=1,te=1;break;case 2:Q=0,ee=V,te=0;break;case 3:Q=1,ee=0,te=1;break;default:Q=V,ee=0,te=0}if(pe=null,ne=null,re=!1,de=void 0,Ue=!1,Ie=0,he=void 0,ye=!1,qe=0,me=void 0,Ze=-1,Le=-1,We=!!t[14*Z+L&31],xe=!!t[11*Z+L&31],Ye=!!t[19*Z+L&31],Ce=!!t[2*Z+L&31],Ke=r,Ge=!!t[1*Z+L&31],!We&&!Ge&&null==r&&(r=l),ze=t[18*Z+L&31]||0,Pe={_$whFvHM:ze?new Array(ze).fill(void 0):Y,_$XUjbMW:null,_$Ln6EIu:-1,_$YbRseW:y},S){let e=t[32]||0;for(let t=0,p=S.length<e?S.length:e;t<p;t++)z[t]=S[t]}Ae=S?S.length:0,Je=null,He=null,Be=!1,Xe=(t[32]||0)+(t[33]||0),Oe=null,De=0}else k=T[28],Z=T[29]>>>0,L=T[30]>>>0,W=T[31],G=T[32],N=T[33],F=T[34],V=0|T[35],D=0|T[36],Q=0|T[37],ee=0|T[38],te=0|T[39],We=!!T[40],xe=!!T[41],Ye=!!T[42],Ce=!!T[43],Ge=!!T[44],ze=0|T[45],Xe=0|T[46];if(void 0!==T)if(S=T[0],r=T[1],Ke=T[2],m=T[3],at=T[4],z=T[5],ut=T[6],pe=T[7],Pe=T[8],Ae=T[9],Je=T[10],He=T[11],Be=T[12],Oe=T[13],De=T[14],T[16]?(ne=T[17],re=T[18],de=T[19],Ue=T[20],Ie=T[21],he=T[22],ye=T[23],qe=T[24],me=T[25],Ze=T[26],Le=T[27]):(ne=null,re=!1,de=void 0,Ue=!1,Ie=0,he=void 0,ye=!1,qe=0,me=void 0,Ze=-1,Le=-1),1===_)m[at++]=$;else if(2===_){if(!pe)throw X($);{let e=pe;at=e._$216olG,void 0!==e._$ntW3Iv&&(Pe=e._$ntW3Iv),void 0!==e._$5Vt0Ps?(m[at++]=$,ut=e._$5Vt0Ps,e._$5Vt0Ps=void 0,void 0===e._$733hPL&&pe&&(pe=pe._$N4k7zK)):void 0!==e._$733hPL?(ut=e._$733hPL,e._$vL0xyY=$):(ut=e._$hIOY5a,pe&&(pe=pe._$N4k7zK))}}else if(3===_){let e=$;for(;pe;){if(void 0!==pe._$733hPL)break;pe&&(pe=pe._$N4k7zK)}if(!pe)return e;{let t=pe;if(void 0===t._$733hPL)return e;ne=null,Ue=!1,Ie=0,he=void 0,ye=!1,qe=0,me=void 0,re=!0,de=e,Ze=t._$hEsioL,Le=t._$hIOY5a,ut=t._$733hPL}}for(lt=m,it=O,et=function(e,t){let p=rt,n=ot,i=lt;try{switch(e){case 22:{let e,t=i[--n];if(null==t)throw new TypeError(t+" is not iterable");let r=t[je];if(Array.isArray(t)&&r===se){let p=t.length;e=new Array(p);for(let n=0;n<p;n++)e[n]=t[n]}else{if(null==r||"function"!=typeof r)throw new TypeError(t+" is not iterable");let p=o(r,t,[]);if(null===p||"object"!=typeof p)throw new TypeError("Iterator method returned a non-object value");for(e=[];;){let t=p.next();if(Te(t),t.done)break;e[e.length]=t.value}}let l={value:e};oe.add(l),le++,i[n++]=l,p++;break}case 15:{let e=i[--n],t=i[--n];if(null==t){if(e===Symbol.iterator)throw new TypeError((null===t?"object null":"undefined")+" is not iterable (cannot read property Symbol(Symbol.iterator))");throw new TypeError("Cannot read properties of "+t+" (reading "+("symbol"==typeof e?"'"+e.toString()+"'":"string"==typeof e?"'"+e+"'":"object"==typeof e||"function"==typeof e?"'<computed key>'":"'"+String(e)+"'")+")")}i[n++]=t[e],p++;break}case 9:i[--n],i[n++]=void 0,p++;break;case 42:{let e=i[--n],r=i[--n],o=i[n-1],l=_e(o);1!==t&&ve(e,"name",{value:"set "+("symbol"==typeof r?void 0===r.description?"":"["+r.description+"]":""+r),writable:!1,enumerable:!1,configurable:!0}),I(l,r,{set:e,enumerable:l===o,configurable:!0}),p++;break}case 27:i[--n]?p=N[p]:p++;break;case 4:if("symbol"==typeof i[n-1])throw new TypeError("Cannot convert a Symbol value to a string");i[n-1]=String(i[n-1]),p++;break;case 20:i[n++]={},p++;break;case 28:i[n-1]=-i[n-1],p++;break;case 18:{let e=i[--n];null!=e?p=N[p]:p++;break}case 13:e:{let e=N[p];for(;pe;){let t=pe;if(void 0!==t._$733hPL||!(e>=t._$hIOY5a||e<=t._$hEsioL))break;pe&&(pe=pe._$N4k7zK)}if(pe){let t=pe;if(void 0!==t._$733hPL&&(e>=t._$hIOY5a||e<=t._$hEsioL)){ne=null,re=!1,de=void 0,Ue=!1,Ie=0,he=void 0,ye=!0,qe=e,me=Pe,Ze=t._$hEsioL,Le=t._$hIOY5a,p=t._$733hPL;break e}}(re||Ue||ye||null!==ne)&&(e>=Le||e<=Ze)&&(re=!1,de=void 0,Ue=!1,Ie=0,he=void 0,ye=!1,qe=0,me=void 0,ne=null),p=e}break;case 51:{let e=65535&t,n=Pe._$whFvHM;n[e]=n;let i=t>>>16;i&&((Pe._$skDOfb||(Pe._$skDOfb={}))[e]=W[i-1]),p++;break}case 64:{let e=i[--n],r=i[--n],o=W[t];if(null==r)throw new TypeError("Cannot set properties of "+r+" (setting '"+String(o)+"')");We?r[o]=e:d(r,o,e),i[n++]=e,p++;break}case 41:{let e=i[--n],t=i[--n];i[n++]=t**e,p++;break}case 60:{let e=i[--n],r=W[t];if(null==e)throw new TypeError("Cannot read properties of "+e+" (reading '"+String(r)+"')");i[n++]=e[r],p++;break}case 19:{let e=i[--n],t=i[--n];i[n++]=t*e,p++;break}case 7:{let e=i[--n],t=i[--n];i[n++]=t%e,p++;break}case 53:{let e,t,r,o,l,a,c,d,f,U=i[--n];if(e)r=1&e[0],o=2&e[0],l=4&e[0],a=8&e[0],d=16&e[0],c=e[1]||0,f=e[2]||void 0,t={n:U};else{t="object"==typeof U?U:Ee(U);let e=t?Ne(t[32],t[33]):void 0,p=t?Fe(t[32],t[33]):void 0;r=t&&t[1*e+p&31],o=t&&t[9*e+p&31],l=t&&t[17*e+p&31],a=t&&t[25*e+p&31],c=t&&t[32]||0,d=t&&t[14*e+p&31];let n=t&&t[21*e+p&31];f=void 0!==n?t[7*e+p&31][n]:void 0}U=t;let I,h=r?Ke:void 0,y=Pe,v=void 0===f?"":f;if(l)I=function(e,t,p,n,i,r,o,l,a){let c=function(e,t,p,n){if(t)return function(){switch(n){case 1:return{*[p](t,p=void 0,...{[(p=e(this,arguments),"length")]:n}){return yield*p}}[p];case 2:return{*[p](t,p,n=void 0,...{[(n=e(this,arguments),"length")]:i}){return yield*n}}[p];case 3:return{*[p](t,p,n,i=void 0,...{[(i=e(this,arguments),"length")]:r}){return yield*i}}[p];default:return{*[p](t=void 0,...{[(t=e(this,arguments),"length")]:p}){return yield*t}}[p]}}();switch(n){case 1:return{*[p](t,p=void 0,...{[(p=e(this,arguments),"length")]:n}){return yield*p}}[p];case 2:return{*[p](t,p,n=void 0,...{[(n=e(this,arguments),"length")]:i}){return yield*n}}[p];case 3:return{*[p](t,p,n,i=void 0,...{[(i=e(this,arguments),"length")]:r}){return yield*i}}[p];default:return{*[p](t=void 0,...{[(t=e(this,arguments),"length")]:p}){return yield*t}}[p]}}(function(n,i){return e(u._$1H5a1H,t,o,n,p,c,i)},i,l,a);return n.add(c),c}(Ve,U,y,ae,d,0,o,v,c);else if(o)I=r?function(e,t,p,n,i,r){let o=j(function(i,r){return e(void 0,t,void 0,n,p,o,r)},!0,i,r);return o}(Me,U,y,h,v,c):function(e,t,p,n,i,r,o){let l=j(function(n,i,r){let o=void 0!==r?r:u._$AftfMj;return void 0===r&&void 0!==u._$AftfMj&&void 0===u._$IDQ1LX&&(u._$AftfMj=void 0),e(void 0,t,o,n,p,l,i)},n,r,o);return l}(Me,U,y,d,0,v,c);else if(r){I=function(e,t,p,n,i,r){let o,l=u._$1H5a1H;return o=s(function(i,r){if(void 0===l)return e(t,void 0,n,p,o,r);let a=u._$1H5a1H;u._$KJbdJU=!0,u._$1H5a1H=l;try{return e(t,void 0,n,p,o,r)}finally{u._$1H5a1H=a}},!0,i,r),o}(ke,U,y,h,v,c);let e=u._$IDQ1LX;void 0===e&&w&&fe.has(w)&&(e=fe.get(w)),void 0!==e&&fe.set(I,e)}else I=function(e,t,p,n,i,r,o,l){let a,c=function(n,i,r){let o=void 0!==r?r:u._$AftfMj;return void 0===r&&void 0!==u._$AftfMj&&void 0===u._$IDQ1LX&&(u._$AftfMj=void 0),e(t,o,n,p,a,i)};if(r){a=s(c,n,o,l);try{delete a.prototype}catch(e){}}else a=function(e,t,p,n){if(""===p){if(t)switch(n){case 1:return{"":function(t){return e(this,arguments,new.target)}}[""];case 2:return{"":function(t,p){return e(this,arguments,new.target)}}[""];case 3:return{"":function(t,p,n){return e(this,arguments,new.target)}}[""];default:return{"":function(){return e(this,arguments,new.target)}}[""]}switch(n){case 1:return{"":function(t,p=void 0){return e(this,arguments,new.target)}}[""];case 2:return{"":function(t,p,n=void 0){return e(this,arguments,new.target)}}[""];case 3:return{"":function(t,p,n,i=void 0){return e(this,arguments,new.target)}}[""];default:return{"":function(t=void 0){return e(this,arguments,new.target)}}[""]}}if(t)switch(n){case 1:return{[p]:function(t){return e(this,arguments,new.target)}}[p];case 2:return{[p]:function(t,p){return e(this,arguments,new.target)}}[p];case 3:return{[p]:function(t,p,n){return e(this,arguments,new.target)}}[p];default:return{[p]:function(){return e(this,arguments,new.target)}}[p]}switch(n){case 1:return{[p]:function(t,p=void 0){return e(this,arguments,new.target)}}[p];case 2:return{[p]:function(t,p,n=void 0){return e(this,arguments,new.target)}}[p];case 3:return{[p]:function(t,p,n,i=void 0){return e(this,arguments,new.target)}}[p];default:return{[p]:function(t=void 0){return e(this,arguments,new.target)}}[p]}}(c,n,o,l);return ce(a,{_$weZYrR:t,_$hc5OH6:p,_$4yPW6T:void 0,_$R0rzu9:void 0}),a}(ke,U,y,d,0,a,v,c);c>3&&ve(I,"length",{value:c,writable:!1,enumerable:!1,configurable:!0}),i[n++]=I,p++;break}case 71:i[n++]=Ke,p++;break;case 61:{let e=i[--n],r=i[n-1],o=W[t],l=_e(r);I(l,o,{get:e,enumerable:l===r,configurable:!0}),p++;break}case 62:{let e=65535&t,r=t>>>16,o=Pe;for(let e=0;e<r;e++)o=o._$YbRseW;let l=o._$whFvHM,a=l[e];if(a===l){let t=o._$skDOfb;throw new ReferenceError("Cannot access '"+(t&&t[e]||"variable")+"' before initialization")}i[n++]=a,p++;break}case 29:{let e=i[--n],t=i[n-1];if(Array.isArray(e)&&e[je]===se){let p=t.length,n=e.length;for(let i=0;i<n;i++)t[p+i]=e[i]}else for(let p of e)t[t.length]=p;p++;break}case 16:e:{if(N[p]===Le){if(null!==ne){re=!1,Ue=!1,ye=!1;let e=ne;throw ne=null,X(e)}if(re){for(;pe;){if(void 0!==pe._$733hPL)break;pe&&(pe=pe._$N4k7zK)}if(pe){let e=pe;if(void 0!==e._$733hPL){Ze=e._$hEsioL,Le=e._$hIOY5a,p=e._$733hPL;break e}}let e=de;return re=!1,de=void 0,Qe=e,1}if(Ue){for(;pe;){let e=pe;if(void 0!==e._$733hPL||!(Ie>=e._$hIOY5a||Ie<=e._$hEsioL))break;pe&&(pe=pe._$N4k7zK)}if(pe){let e=pe;if(void 0!==e._$733hPL&&(Ie>=e._$hIOY5a||Ie<=e._$hEsioL)){Ze=e._$hEsioL,Le=e._$hIOY5a,p=e._$733hPL;break e}}let e=Ie;Ue=!1,Ie=0,void 0!==he&&(Pe=he,he=void 0),p=e;break e}if(ye){for(;pe;){let e=pe;if(void 0!==e._$733hPL||!(qe>=e._$hIOY5a||qe<=e._$hEsioL))break;pe&&(pe=pe._$N4k7zK)}if(pe){let e=pe;if(void 0!==e._$733hPL&&(qe>=e._$hIOY5a||qe<=e._$hEsioL)){Ze=e._$hEsioL,Le=e._$hIOY5a,p=e._$733hPL;break e}}let e=qe;ye=!1,qe=0,void 0!==me&&(Pe=me,me=void 0),p=e;break e}}p++}break;case 10:{let e=i[--n],t=e&&e.i?e.i:e;if(null!=t)if(null!==ne)try{let e=t.return;"function"==typeof e&&o(e,t,[])}catch(e){}else{let e=t.return;if(null!=e){if("function"!=typeof e)throw new TypeError("iterator 'return' is not callable");Te(o(e,t,[]))}}p++;break}case 21:{let e=65535&t,r=t>>>16,o=i[--n],l=Pe;for(let e=0;e<r;e++)l=l._$YbRseW;let a=l._$whFvHM;if(a[e]===a){let t=l._$skDOfb;throw new ReferenceError("Cannot access '"+(t&&t[e]||"variable")+"' before initialization")}let u=l._$XUjbMW,c=u&&u[e];if(c){if(2!==c||We)throw new TypeError("Assignment to constant variable.")}else a[e]=o;p++;break}case 50:{let e,r=i[--n],o=i[--n],l=(25546^t)>>>0;e=l<16?l<8?l<4?l<2?l<1?o>=r:o<r:l<3?o>>r:o-r:l<6?l<5?o^r:o==r:l<7?o+r:o&r:l<12?l<10?l<9?o>>>r:o<=r:l<11?null==o?r!==o:o!==r:o/r:l<14?l<13?o!=r:o|r:l<15?o**r:o*r:l<20?l<18?l<17?o%r:o>r:l<19?o<<r:null==o?r===o:o===r:l<24?l<22?o|r:o&r:l<28?o^r:r-o,i[n++]=e,p++;break}case 72:{let e=i[--n],t=e&&e.i?e.i:e;try{if(null!=t){let e=t.return;"function"==typeof e&&o(e,t,[])}}catch(e){}p++;break}case 55:{let e,t=i[--n];if(0===t)e=Y;else if(1===t){let t=i[--n];e=0!==le&&t&&"object"==typeof t&&oe.has(t)?(le--,t.value):[t]}else e=we(i,n-=t,t);let r=i[--n],l=i[--n];if("function"!=typeof r)throw new TypeError(r+" is not a function");let a=u._$KxecoW,c=a&&a.get(r);!c&&a&&(r===h||r===g)&&(c=a.get(l));let d,f=u._$1H5a1H;c&&(u._$KJbdJU=!0,u._$1H5a1H=c);try{d=o(r,l,e),i[n++]=d}finally{c&&(u._$KJbdJU=!1),u._$1H5a1H=f}p++;break}case 24:{let e=i[--n],r=i[--n],o=W[16777215&t];I(r,o,{value:e,writable:!0,enumerable:!0,configurable:!0}),16777216&t&&(!u._$KxecoW&&(u._$KxecoW=ie()),u._$KxecoW.set(e,r)),p++;break}case 57:{let e=i[--n],t=i[--n];i[n++]=t-e,p++;break}case 14:{let e=i[--n],t=i[--n];i[n++]=t/e,p++;break}case 0:i[n++]=Pe,p++;break;case 25:{let e=t,r=i[--n];Pe._$whFvHM[e]=r,p++;break}}}finally{rt=p,ot=n}},tt=function(p,i){let r=rt,c=ot,s=lt;try{switch(p){case 84:e:{for(;pe;){if(void 0!==pe._$733hPL)break;pe&&(pe=pe._$N4k7zK)}if(pe){let e=pe;if(void 0!==e._$733hPL){ne=null,Ue=!1,Ie=0,he=void 0,ye=!1,qe=0,me=void 0,re=!0,de=s[--c],Ze=e._$hEsioL,Le=e._$hIOY5a,r=e._$733hPL;break e}}(re||Ue||ye)&&(re=!1,de=void 0,Ue=!1,Ie=0,he=void 0,ye=!1,qe=0,me=void 0),ne=null;let e=s[--c];if(Ye&&void 0===e&&!Be)throw new ReferenceError("Must call super constructor in derived class before accessing 'this' or returning from derived constructor");return Qe=e,1}break;case 181:{let e=s[--c],t=s[--c];s[c++]=t^e,r++;break}case 121:{let e=s[--c];if(null==e)throw new TypeError(e+" is not iterable");let t=e[je];if(Array.isArray(e)&&t===se)s[c++]={_$5xaIHb:e,_$HP8xLF:0},r++;else{if("function"!=typeof t)throw new TypeError(e+" is not iterable");let p=o(t,e,[]);Te(p);let n=p.next;s[c++]={i:p,n:n},r++}break}case 107:s[c-1]=!s[c-1],r++;break;case 123:s[c++]=void 0,r++;break;case 141:e:{let e,p,n=s[--c];1===n?e=s[--c]:n>1&&(p=we(s,c-=n,n));let i=s[--c];if("function"!=typeof i)throw new TypeError(i+" is not a function");if(i===w&&De<256&&t[0*Z+L&31]&&(Ge||Ke===(We?void 0:l))&&!u._$1H5a1H&&!u._$AftfMj&&(!u._$KxecoW||!u._$KxecoW.get(i))){let i=0===n?[]:1===n?0!==le&&e&&"object"==typeof e&&oe.has(e)?(le--,e.value):[e]:p;!Oe&&(Oe=[]),Oe[De++]=Pe,Oe[De++]=Je,Oe[De++]=r,Oe[De++]=He,Oe[De++]=c,Oe[De++]=S;for(let e=0;e<Xe;e++)Oe[De++]=z[e];S=i,He=null,Je=null,Pe={_$whFvHM:ze?new Array(ze).fill(void 0):Y,_$XUjbMW:null,_$Ln6EIu:-1,_$YbRseW:y};for(let e=0,p=t[32]||0;e<Xe;e++)z[e]=e<p&&e<i.length?i[e]:void 0;r=0;break e}let a=u._$KxecoW,d=!u._$1H5a1H&&!u._$AftfMj&&!(a&&a.get(i))&&(j=i,ue.get(j));if(d&&!1!==d._$R0rzu9){let o=d._$4yPW6T||function(e,t){return e._$4yPW6T=t,t}(d,"object"==typeof d._$weZYrR?void 0!==d._$weZYrR.n?d._$weZYrR.d||(d._$weZYrR.d=Ee(d._$weZYrR.n)):d._$weZYrR:Re(d._$weZYrR));if(o){let a;a=0===n?[]:1===n?0!==le&&e&&"object"==typeof e&&oe.has(e)?(le--,e.value):[e]:p;let f=o===t?Z:Ne(o[32],o[33]),j=o===t?L:Fe(o[32],o[33]);u._$KJbdJU?u._$KJbdJU=!1:u._$1H5a1H=void 0,s[c++]=$e(o,void 0,o[14*f+j&31]?void 0:l,d._$hc5OH6,i,a),r++;break e}}let f,U=u._$1H5a1H,I=u._$KxecoW,h=I&&I.get(i);h?(u._$KJbdJU=!0,u._$1H5a1H=h):u._$1H5a1H=void 0;try{f=0===n?i():1===n?0!==le&&e&&"object"==typeof e&&oe.has(e)?(le--,o(i,void 0,e.value)):i(e):o(i,void 0,p),s[c++]=f}finally{h&&(u._$KJbdJU=!1),u._$1H5a1H=U}r++}break;case 120:{let e=s[--c],t=e&&e._$5xaIHb;if(void 0!==t){let p,n=e._$HP8xLF;n>=t.length?p={value:void 0,done:!0}:(e._$HP8xLF=n+1,p={value:t[n],done:!1}),s[c++]=p,r++}else{let t=e&&e.i?e.i:e,p=e&&e.n?e.n:t&&t.next;if("function"!=typeof p)throw new TypeError("iterator.next is not a function");let n=o(p,t,[]);Te(n),s[c++]=n,r++}break}case 79:{let e=s[--c];if(("object"==typeof e||"function"==typeof e)&&null!==e){const t=e[Symbol.toPrimitive];if(null!=t){if(e=o(t,e,["number"]),null!==e&&("object"==typeof e||"function"==typeof e))throw new TypeError("Cannot convert object to primitive value")}else{const t=e.valueOf;let p="function"==typeof t?o(t,e,[]):e;if(null!==p&&("object"==typeof p||"function"==typeof p)){const t=e.toString;if(p="function"==typeof t?o(t,e,[]):p,null!==p&&("object"==typeof p||"function"==typeof p))throw new TypeError("Cannot convert object to primitive value")}e=p}}s[c++]=typeof e===x?e-0x1n:+e-1,r++;break}case 147:{let e=s[--c],t=s[--c];s[c++]=t<e,r++;break}case 122:{let e=s[--c],t=s[--c],p=s[--c];if(null==p)throw new TypeError("Cannot set properties of "+p+" (setting "+("symbol"==typeof t?"'"+t.toString()+"'":"string"==typeof t?"'"+t+"'":"object"==typeof t||"function"==typeof t?"'<computed key>'":"'"+String(t)+"'")+")");We?p[t]=e:d(p,t,e),s[c++]=e,r++;break}case 160:{let e=s[--c],t=W[i];if(We&&!(t in l)&&!(t in a))throw new ReferenceError(t+" is not defined");a[t]=e,We?l[t]=e:d(l,t,e),s[c++]=e,r++;break}case 93:{let e=s[--c],t=s[--c];s[c++]=t>>e,r++;break}case 124:{let e=s[--c],t=s[--c];s[c++]=null==t?e===t:t===e,r++;break}case 162:{let e=s[c-1];s[c++]=e,r++;break}case 165:null===Je&&(We||!xe)&&S&&(Je=ge(S)),S&&i>=S.length&&!be(S)&&(S=ge(S)),S[i]=s[--c],r++;break;case 75:{let e=s[--c],t=s[--c];s[c++]=null==e||"object"!=typeof e&&"function"!=typeof e||t in e,r++;break}case 104:if(null===He)if(We||!xe){let e=Je||S||Y;if(e.length<=8192)He=o(K,void 0,e);else{He=K();for(let t=0;t<e.length;t++)He[t]=e[t];He.length=e.length}}else{S&&!be(S)&&(S=ge(S));let t=null,p=null;if(0!==i){t=Pe;for(let e=255&i;e>0;e--)t=t._$YbRseW;let e=(i>>>8)-1,n=W[e];p=[];for(let t=0;t<n;t++)p[t]=W[e+1+t]}let r={};I(r,"length",{value:Ae,writable:!0,enumerable:!1,configurable:!0}),I(r,"callee",{value:w,writable:!0,enumerable:!1,configurable:!0}),I(r,Symbol.iterator,{value:n,writable:!0,enumerable:!1,configurable:!0}),He=new e(r,{get:P,set:R,has:E,defineProperty:A,deleteProperty:J,preventExtensions:M,getOwnPropertyDescriptor:H,ownKeys:B,argsLength:Ae,entryArgCount:Ae,args:S,extraArgs:{},deletedArgs:{},unmappedIndices:{},calleeValue:w,calleeDeleted:!1,lengthWritable:!0,paramEnv:t,paramSlotOf:p})}s[c++]=He,r++;break;case 161:{let e,t;i>=0?(t=s[--c],e=W[i]):(e=s[--c],t=s[--c]);let p=We?delete t[e]:f(t,e);s[c++]=p,r++;break}case 180:{let e=s[--c],t=s[--c];s[c++]=t!=e,r++;break}case 128:{let e=s[--c];if(null==e)throw new TypeError(e+" is not iterable");let t=e[Symbol.asyncIterator];if("function"==typeof t)s[c++]=o(t,e,[]);else{let t=e[Symbol.iterator];if("function"!=typeof t)throw new TypeError(e+" is not iterable");let p=o(t,e,[]);if(null===p||"object"!=typeof p)throw new TypeError("Iterator method returned a non-object value");let n=async function(e){if(null===e||"object"!=typeof e)throw new TypeError("Iterator result is not an object");return{value:await e.value,done:!!e.done}},i=async function(e){throw e},r=async function(e){return{value:e,done:!0}},l={next:function(e){let t;try{t=p.next(e)}catch(e){return i(e)}return n(t)},return:function(e){if("function"!=typeof p.return)return r(e);let t;try{t=p.return(e)}catch(e){return i(e)}return n(t)},throw:function(e){if("function"!=typeof p.throw)return i(e);let t;try{t=p.throw(e)}catch(e){return i(e)}return n(t)},[Symbol.asyncIterator]:function(){return this}};s[c++]=l}r++;break}case 106:z[i]=s[--c],r++;break;case 81:{let e=s[--c],t=s[--c];s[c++]=t<<e,r++;break}case 91:{let e=i>>>16,t=W[65535&i],p=W[e];s[c++]=new RegExp(t,p),r++;break}case 105:s[c++]=vmd[i],r++;break;case 167:{let e=s[--c],t=s[--c];s[c++]=t>=e,r++;break}case 144:Pe=Pe._$YbRseW,r++;break;case 90:{let e=s[--c];if(("object"==typeof e||"function"==typeof e)&&null!==e){const t=e[Symbol.toPrimitive];if(null!=t){if(e=o(t,e,["number"]),null!==e&&("object"==typeof e||"function"==typeof e))throw new TypeError("Cannot convert object to primitive value")}else{const t=e.valueOf;let p="function"==typeof t?o(t,e,[]):e;if(null!==p&&("object"==typeof p||"function"==typeof p)){const t=e.toString;if(p="function"==typeof t?o(t,e,[]):p,null!==p&&("object"==typeof p||"function"==typeof p))throw new TypeError("Cannot convert object to primitive value")}e=p}}s[c++]=typeof e===x?e+0x1n:+e+1,r++;break}}}finally{rt=r,ot=c}var j},pt=function(e,t){let p=rt,n=ot,r=lt;try{switch(e){case 287:{let e=W[t],i=c===l;i&&(e in l&&(i=f(l,e)),i&&e in a&&(i=f(a,e))),r[n++]=i,p++;break}case 276:{let e=r[--n],t=r[--n];r[n++]=t instanceof e,p++;break}case 305:p=N[p];break;case 263:r[--n]?p++:p=N[p];break;case 200:throw X(r[--n]);case 279:{let e=r[--n],t=we(r,n-=e,e),i=r[--n];if("function"!=typeof i)throw new TypeError(i+" is not a constructor");if(ae.has(i))throw new TypeError(i.name+" is not a constructor");let o,l=u._$1H5a1H;u._$1H5a1H=void 0;try{o=U(i,t)}finally{u._$1H5a1H=l}r[n++]=o,p++;break}case 201:{let e=F[p];pe={_$N4k7zK:pe,_$5Vt0Ps:e[0]>=0?e[0]:void 0,_$733hPL:e[1]>=0?e[1]:void 0,_$hIOY5a:e[2]>=0?e[2]:void 0,_$216olG:n,_$hEsioL:p,_$ntW3Iv:Pe},p++;break}case 274:{let e,i=W[t];if(u._$rx1ws9&&i in u._$rx1ws9)throw new ReferenceError("Cannot access '"+i+"' before initialization");if(i in a)e=a[i];else{if(!(i in l))throw new ReferenceError(i+" is not defined");e=l[i]}r[n++]=e,p++;break}case 308:-2===t||(-1===t?r[--n]:Pe._$whFvHM[t]=r[--n]),p++;break;case 312:{let e=r[--n],t=r[--n];r[n++]=t|e,p++;break}case 294:r[n-1]=+r[n-1],p++;break;case 285:{let e=t;Pe._$whFvHM[e]=w;let n=Pe._$XUjbMW;!n&&(n=b(null),Pe._$XUjbMW=n),n[e]=2,p++;break}case 288:{let e=r[--n];if(("object"==typeof e||"function"==typeof e)&&null!==e){const t=e[Symbol.toPrimitive];if(null!=t){if(e=o(t,e,["number"]),null!==e&&("object"==typeof e||"function"==typeof e))throw new TypeError("Cannot convert object to primitive value")}else{const t=e.valueOf;let p="function"==typeof t?o(t,e,[]):e;if(null!==p&&("object"==typeof p||"function"==typeof p)){const t=e.toString;if(p="function"==typeof t?o(t,e,[]):p,null!==p&&("object"==typeof p||"function"==typeof p))throw new TypeError("Cannot convert object to primitive value")}e=p}}r[n++]=typeof e===x?e:+e,p++;break}case 264:{let e=r[--n],i=r[--n],o=r[n-1],l=_e(o);1!==t&&ve(e,"name",{value:"get "+("symbol"==typeof i?void 0===i.description?"":"["+i.description+"]":""+i),writable:!1,enumerable:!1,configurable:!0}),I(l,i,{get:e,enumerable:l===o,configurable:!0}),p++;break}case 295:{let e=r[--n],i={_$whFvHM:new Array(t),_$XUjbMW:null,_$Ln6EIu:-1,_$YbRseW:e};Pe=i,p++;break}case 320:case 303:r[n++]=W[t],p++;break;case 301:{let e=r[--n],t=r[--n];r[n++]=t>>>e,p++;break}case 297:{let e=r[--n],t=e&&e.i?e.i:e;if(null!==ne)try{t&&"function"==typeof t.return?r[n++]=async function(e){try{await e}catch(e){}}(t.return()):r[n++]=void 0}catch(e){r[n++]=void 0}else{let e=null!=t?t.return:void 0;r[n++]=null==e?void 0:"function"!=typeof e?async function(){throw new TypeError("iterator 'return' is not callable")}():o(e,t,[])}p++;break}case 182:if(pe){let e=pe;e._$733hPL===p&&(void 0!==e._$vL0xyY&&(ne=e._$vL0xyY,Ze=e._$hEsioL,Le=e._$hIOY5a),void 0!==e._$ntW3Iv&&(Pe=e._$ntW3Iv),pe&&(pe=pe._$N4k7zK))}p++;break;case 252:r[--n],p++;break;case 321:{let e=r[n-1];r[n-1]=r[n-2],r[n-2]=e,p++;break}case 272:{let e=r[--n],o=r[n-1];if(2===t)r[n-1]={...e};else if(1===t)r[n-1]={...o,...e};else if(null!=e){let t=Object(e),p=i(t);for(let e=0;e<p.length;e++){let n=p[e],i=q(t,n);void 0!==i&&i.enumerable&&I(o,n,{value:t[n],writable:!0,enumerable:!0,configurable:!0})}}p++;break}case 310:{let e=r[--n];r[n++]=function(e){let t=[];for(let p in e)t[t.length]=p;return t}(e),p++;break}case 220:r[n++]=S[t],p++;break;case 284:pe&&(pe=pe._$N4k7zK),p++;break;case 183:r[n++]=null,p++;break;case 300:{let e=t,i=r[--n];Pe._$whFvHM[e]=i;let o=Pe._$XUjbMW;!o&&(o=b(null),Pe._$XUjbMW=o),o[e]=1,p++;break}case 255:{let e=r[--n];r[n++]=!!e.done,p++;break}case 256:{let e=r[--n],i=W[t];if(u._$rx1ws9&&i in u._$rx1ws9)throw new ReferenceError("Cannot access '"+i+"' before initialization");let o=!(i in a)&&!(i in l);a[i]=e,(o||i in l)&&(We?c[i]=e:d(c,i,e)),r[n++]=e,p++;break}case 265:{let e=z[t],i=e&&e._$5xaIHb;if(void 0!==i){let t=e._$HP8xLF;t>=i.length?p=N[p]:(e._$HP8xLF=t+1,r[n++]=i[t],p++)}else{let t=e.i,i=o(e.n,t,[]);Te(i),i.done?p=N[p]:(r[n++]=i.value,p++)}break}case 269:{let e=r[--n],i=r[n-1],o=W[t],l=_e(i);I(l,o,{set:e,enumerable:l===i,configurable:!0}),p++;break}}}finally{rt=p,ot=n}},nt=function(e,t){let p=rt,n=ot,o=lt;try{switch(e){case 365:p++;break;case 329:{let e=o[--n],t=o[--n];o[n++]=t<=e,p++;break}case 357:{let e=o[--n],t=o[--n];o[n++]=t>e,p++;break}case 327:{let e=o[--n],t=typeof e;if(null===e||"object"!==t&&"function"!==t)"symbol"!==t&&(e=String(e));else{let t=b(null);t[e]=0,e=i(t)[0]}o[n++]=e,p++;break}case 366:{let e=o[--n],t=o[n-1];(null===e||Se(e))&&v(t,e),p++;break}case 345:o[n++]=z[t],p++;break;case 377:o[n++]=[],p++;break;case 370:{let e=Je||S,i=e?e.length:0,r=[];for(let p=t;p<i;p++)r[p-t]=e[p];o[n++]=r,p++;break}case 371:{let e=Pe._$whFvHM;e[t]=e,Pe._$Ln6EIu=t,p++;break}case 351:{let e=o[--n],t=o[n-1];t[t.length]=e,p++;break}case 333:{let e=W[t];o[n++]=e in a?typeof a[e]:typeof l[e],p++;break}case 323:o[n-1]=~o[n-1],p++;break;case 326:o[n++]=r,p++;break;case 358:{let e=o[n-3],t=o[n-2],i=o[n-1];o[n-3]=t,o[n-2]=i,o[n-1]=e,p++;break}case 350:o[n++]=vmY[t],p++;break;case 360:{let e=W[t],i=!0;e in l&&(i=f(l,e)),i&&e in a&&(i=f(a,e)),o[n++]=i,p++;break}case 380:{let e=o[--n],i=o[n-1],r=W[16777215&t];r in i?I(i,r,{value:e,writable:!0,enumerable:!0,configurable:!0}):i[r]=e,16777216&t&&(!u._$KxecoW&&(u._$KxecoW=ie()),u._$KxecoW.set(e,i)),p++;break}case 379:o[n-1]=typeof o[n-1],p++;break;case 355:{let e=o[--n];o[n++]=e.next(),p++;break}case 384:{let e=o[--n],t=o[--n];o[n++]=t+e,p++;break}case 381:{let e=o[--n],t=o[--n];o[n++]=t in e,p++;break}case 344:{let e=o[--n],t=o[--n];o[n++]=t==e,p++;break}case 330:{let e=o[--n],t=o[--n];o[n++]=null==t?e!==t:t!==e,p++;break}case 342:{let e=o[--n],i=o[--n],r=o[--n];if(1&t&&"function"==typeof e){ve(e,"name",{value:"symbol"==typeof i?void 0===i.description?"":"["+i.description+"]":""+i,writable:!1,enumerable:!1,configurable:!0})}I(r,i,{value:e,writable:!0,enumerable:!0,configurable:!0}),2&t&&(!u._$KxecoW&&(u._$KxecoW=ie()),u._$KxecoW.set(e,r)),p++;break}case 363:o[n-1].length++,p++;break;case 328:{let e=o[--n],t=o[--n];o[n++]=t&e,p++;break}case 368:e:{let e=N[p];for(;pe;){let t=pe;if(void 0!==t._$733hPL||!(e>=t._$hIOY5a||e<=t._$hEsioL))break;pe&&(pe=pe._$N4k7zK)}if(pe){let t=pe;if(void 0!==t._$733hPL&&(e>=t._$hIOY5a||e<=t._$hEsioL)){ne=null,re=!1,de=void 0,ye=!1,qe=0,me=void 0,Ue=!0,Ie=e,he=Pe,Ze=t._$hEsioL,Le=t._$hIOY5a,p=t._$733hPL;break e}}(re||Ue||ye||null!==ne)&&(e>=Le||e<=Ze)&&(re=!1,de=void 0,Ue=!1,Ie=0,he=void 0,ye=!1,qe=0,me=void 0,ne=null),p=e}}}finally{rt=p,ot=n}};ut<V;)try{for(;ut<V;){let e,t=ut<<te,p=G[Q+t],n=G[ee+t];switch(it[p]){case 1:{let e,t=W[n];if(u._$rx1ws9&&t in u._$rx1ws9)throw new ReferenceError("Cannot access '"+t+"' before initialization");if(t in a)e=a[t];else{if(!(t in l))throw new ReferenceError(t+" is not defined");e=l[t]}m[at++]=e,ut++;continue}case 2:{let e=m[--at],t=W[n];if(null==e)throw new TypeError("Cannot read properties of "+e+" (reading '"+String(t)+"')");m[at++]=e[t],ut++;continue}case 3:{let e=m[--at],t=m[--at],p=W[n];if(null==t)throw new TypeError("Cannot set properties of "+t+" (setting '"+String(p)+"')");We?t[p]=e:d(t,p,e),m[at++]=e,ut++;continue}case 4:{let e=m[--at];if(("object"==typeof e||"function"==typeof e)&&null!==e){const t=e[Symbol.toPrimitive];if(null!=t){if(e=o(t,e,["number"]),null!==e&&("object"==typeof e||"function"==typeof e))throw new TypeError("Cannot convert object to primitive value")}else{const t=e.valueOf;let p="function"==typeof t?o(t,e,[]):e;if(null!==p&&("object"==typeof p||"function"==typeof p)){const t=e.toString;if(p="function"==typeof t?o(t,e,[]):p,null!==p&&("object"==typeof p||"function"==typeof p))throw new TypeError("Cannot convert object to primitive value")}e=p}}m[at++]=typeof e===x?e-0x1n:+e-1,ut++;continue}case 5:m[--at],m[at++]=void 0,ut++;continue;case 6:{let e=65535&n,t=n>>>16,p=Pe;for(let e=0;e<t;e++)p=p._$YbRseW;let i=p._$whFvHM,r=i[e];if(r===i){let t=p._$skDOfb;throw new ReferenceError("Cannot access '"+(t&&t[e]||"variable")+"' before initialization")}m[at++]=r,ut++;continue}case 7:{let e=m[at-1];m[at++]=e,ut++;continue}case 8:m[at++]=Pe,ut++;continue;case 9:{let e=m[--at],t=m[--at],p=m[--at];if(null==p)throw new TypeError("Cannot set properties of "+p+" (setting "+("symbol"==typeof t?"'"+t.toString()+"'":"string"==typeof t?"'"+t+"'":"object"==typeof t||"function"==typeof t?"'<computed key>'":"'"+String(t)+"'")+")");We?p[t]=e:d(p,t,e),m[at++]=e,ut++;continue}case 10:throw X(m[--at]);case 11:{let e,t=m[--at],p=m[--at],i=(25546^n)>>>0;e=i<16?i<8?i<4?i<2?i<1?p>=t:p<t:i<3?p>>t:p-t:i<6?i<5?p^t:p==t:i<7?p+t:p&t:i<12?i<10?i<9?p>>>t:p<=t:i<11?null==p?t!==p:p!==t:p/t:i<14?i<13?p!=t:p|t:i<15?p**t:p*t:i<20?i<18?i<17?p%t:p>t:i<19?p<<t:null==p?t===p:p===t:i<24?i<22?p|t:p&t:i<28?p^t:t-p,m[at++]=e,ut++;continue}case 12:m[at-1]=typeof m[at-1],ut++;continue;case 13:ut=N[ut];continue;case 14:{let e=m[--at];null!=e?ut=N[ut]:ut++;continue}case 15:null===Je&&(We||!xe)&&S&&(Je=ge(S)),S&&n>=S.length&&!be(S)&&(S=ge(S)),S[n]=m[--at],ut++;continue;case 16:{let e=m[--at],t={_$whFvHM:new Array(n),_$XUjbMW:null,_$Ln6EIu:-1,_$YbRseW:e};Pe=t,ut++;continue}case 17:m[at++]=[],ut++;continue;case 18:m[at++]=null,ut++;continue;case 19:m[at-1]=!m[at-1],ut++;continue;case 20:{let e=65535&n,t=n>>>16,p=m[--at],i=Pe;for(let e=0;e<t;e++)i=i._$YbRseW;let r=i._$whFvHM;if(r[e]===r){let t=i._$skDOfb;throw new ReferenceError("Cannot access '"+(t&&t[e]||"variable")+"' before initialization")}let o=i._$XUjbMW,l=o&&o[e];if(l){if(2!==l||We)throw new TypeError("Assignment to constant variable.")}else r[e]=p;ut++;continue}case 21:{let e=m[--at],t=m[--at];if(null==t){if(e===Symbol.iterator)throw new TypeError((null===t?"object null":"undefined")+" is not iterable (cannot read property Symbol(Symbol.iterator))");throw new TypeError("Cannot read properties of "+t+" (reading "+("symbol"==typeof e?"'"+e.toString()+"'":"string"==typeof e?"'"+e+"'":"object"==typeof e||"function"==typeof e?"'<computed key>'":"'"+String(e)+"'")+")")}m[at++]=t[e],ut++;continue}case 22:m[at-1]=-m[at-1],ut++;continue;case 23:{let e=m[at-3],t=m[at-2],p=m[at-1];m[at-3]=t,m[at-2]=p,m[at-1]=e,ut++;continue}case 24:{let e=n,t=m[--at];Pe._$whFvHM[e]=t,ut++;continue}case 25:m[at-1]=~m[at-1],ut++;continue;case 26:z[n]=m[--at],ut++;continue;case 27:m[--at],ut++;continue;case 28:m[at++]=r,ut++;continue;case 29:case 37:m[at++]=W[n],ut++;continue;case 30:m[--at]?ut++:ut=N[ut];continue;case 31:m[at++]=z[n],ut++;continue;case 32:Pe=Pe._$YbRseW,ut++;continue;case 33:{let e=m[--at];if(("object"==typeof e||"function"==typeof e)&&null!==e){const t=e[Symbol.toPrimitive];if(null!=t){if(e=o(t,e,["number"]),null!==e&&("object"==typeof e||"function"==typeof e))throw new TypeError("Cannot convert object to primitive value")}else{const t=e.valueOf;let p="function"==typeof t?o(t,e,[]):e;if(null!==p&&("object"==typeof p||"function"==typeof p)){const t=e.toString;if(p="function"==typeof t?o(t,e,[]):p,null!==p&&("object"==typeof p||"function"==typeof p))throw new TypeError("Cannot convert object to primitive value")}e=p}}m[at++]=typeof e===x?e+0x1n:+e+1,ut++;continue}case 34:{let e=65535&n,t=Pe._$whFvHM;t[e]=t;let p=n>>>16;p&&((Pe._$skDOfb||(Pe._$skDOfb={}))[e]=W[p-1]),ut++;continue}case 35:{let e=m[at-1];m[at-1]=m[at-2],m[at-2]=e,ut++;continue}case 36:m[--at]?ut=N[ut]:ut++;continue;case 38:{let e=m[--at];if(("object"==typeof e||"function"==typeof e)&&null!==e){const t=e[Symbol.toPrimitive];if(null!=t){if(e=o(t,e,["number"]),null!==e&&("object"==typeof e||"function"==typeof e))throw new TypeError("Cannot convert object to primitive value")}else{const t=e.valueOf;let p="function"==typeof t?o(t,e,[]):e;if(null!==p&&("object"==typeof p||"function"==typeof p)){const t=e.toString;if(p="function"==typeof t?o(t,e,[]):p,null!==p&&("object"==typeof p||"function"==typeof p))throw new TypeError("Cannot convert object to primitive value")}e=p}}m[at++]=typeof e===x?e:+e,ut++;continue}case 39:m[at++]={},ut++;continue;case 40:{let e=m[--at],t=m[at-1],p=W[16777215&n];p in t?I(t,p,{value:e,writable:!0,enumerable:!0,configurable:!0}):t[p]=e,16777216&n&&(!u._$KxecoW&&(u._$KxecoW=ie()),u._$KxecoW.set(e,t)),ut++;continue}case 41:m[at++]=void 0,ut++;continue;case 42:m[at++]=S[n],ut++;continue}if(369===p||254===p||45===p){let e=m[--at];ut++,void 0===T&&((T=[])[15]={_$OaZPeY:T},T[28]=k,T[29]=Z,T[30]=L,T[31]=W,T[32]=G,T[33]=N,T[34]=F,T[35]=V,T[36]=D,T[37]=Q,T[38]=ee,T[39]=te,T[40]=We,T[41]=xe,T[42]=Ye,T[43]=Ce,T[44]=Ge,T[45]=ze,T[46]=Xe),T[0]=S,T[1]=r,T[2]=Ke,T[3]=m,T[4]=at,T[5]=z,T[6]=ut,T[7]=pe,T[8]=Pe,T[9]=Ae,T[10]=Je,T[11]=He,T[12]=Be,T[13]=Oe,T[14]=De,null!==ne||re||Ue||ye?(T[16]=!0,T[17]=ne,T[18]=re,T[19]=de,T[20]=Ue,T[21]=Ie,T[22]=he,T[23]=ye,T[24]=qe,T[25]=me,T[26]=Ze,T[27]=Le):T[16]=!1;let t=T[15];return t._$NrOCg5=369===p?1:254===p?2:3,t._$vvdbXE=e,t}if(rt=ut,ot=at,e=p<75?et(p,n):p<182?tt(p,n):p<323?pt(p,n):nt(p,n),ut=rt,at=ot,e){if(De>0){for(let e=Xe-1;e>=0;e--)z[e]=Oe[--De];S=Oe[--De],at=Oe[--De],He=Oe[--De],ut=Oe[--De],Je=Oe[--De],Pe=Oe[--De],m[at++]=Qe,ut++;continue}return Qe}}if(De>0){for(let e=Xe-1;e>=0;e--)z[e]=Oe[--De];S=Oe[--De],at=Oe[--De],He=Oe[--De],ut=Oe[--De],Je=Oe[--De],Pe=Oe[--De],m[at++]=void 0,ut++;continue}break}catch(e){if(C=0,pe){let t=pe;at=t._$216olG,void 0!==t._$ntW3Iv&&(Pe=t._$ntW3Iv),void 0!==t._$5Vt0Ps?(null!==ne&&(t._$5Vt0Ps>=Le||t._$5Vt0Ps<=Ze)&&(ne=null),m[at++]=e,ut=t._$5Vt0Ps,t._$5Vt0Ps=void 0,void 0===t._$733hPL&&pe&&(pe=pe._$N4k7zK)):void 0!==t._$733hPL?(ut=t._$733hPL,t._$vL0xyY=e):(ut=t._$hIOY5a,pe&&(pe=pe._$N4k7zK));continue}throw X(e)}let ct=at>Xe?m[--at]:Be?r:void 0;if(Ye&&!Be&&(null==ct||"object"!=typeof ct&&"function"!=typeof ct))throw new ReferenceError("Must call super constructor in derived class before accessing 'this' or returning from derived constructor");return ct}let ke=function(e,t,p,n,i,r){0;let o=u._$1H5a1H;try{u._$KJbdJU?u._$KJbdJU=!1:u._$1H5a1H=void 0;let t="object"==typeof e?void 0!==e.n?e.d||(e.d=Ee(e.n)):e:Re(e);t&&Ne(t[32],t[33]),t&&Fe(t[32],t[33]);return $e(t,0,p,n,i,r)}finally{u._$1H5a1H=o}};function me(e){this._$H8LmUo=e,this._$7ua0Qm=new Z(e.buffer,e.byteOffset,e.byteLength),this._$L69YlK=0}me.prototype._$KSTrY2=function(){return this._$H8LmUo[this._$L69YlK++]},me.prototype._$RpmQpp=function(){let e=this._$7ua0Qm.getUint16(this._$L69YlK,!0);return this._$L69YlK+=2,e},me.prototype._$LJakvF=function(){let e=this._$7ua0Qm.getUint32(this._$L69YlK,!0);return this._$L69YlK+=4,e},me.prototype._$owHAGY=function(){let e=this._$7ua0Qm.getInt32(this._$L69YlK,!0);return this._$L69YlK+=4,e},me.prototype._$2aW3pU=function(){let e=this._$7ua0Qm.getFloat64(this._$L69YlK,!0);return this._$L69YlK+=8,e},me.prototype._$xoUAqC=function(){let e,t=0,p=0;do{e=this._$KSTrY2(),t|=(127&e)<<p,p+=7}while(e>=128);return t>>>1^-(1&t)},me.prototype._$3rfzLJ=function(){let e=this._$xoUAqC(),t=this._$H8LmUo,p=this._$L69YlK,n=p+e;this._$L69YlK=n;for(var i="";p<n;){var r=t[p++];if(r<128)i+=L(r);else if(r<224)i+=L((31&r)<<6|63&t[p++]);else if(r<240)i+=L((15&r)<<12|(63&t[p++])<<6|63&t[p++]);else{var o=(7&r)<<18|(63&t[p++])<<12|(63&t[p++])<<6|63&t[p++];i+=L(55296+((o-=65536)>>10),56320+(1023&o))}}return i};for(var Ze="pjIw0ySkTR1tGWeQd5XaFznNif3Z2u8oUPCmBcY6ME+DqVrA4x7LJKvlh/9OHbgs",Le=new m(128),We=0;We<64;We++)Le[Ze.charCodeAt(We)]=We;function xe(e,t,p){switch(e._$KSTrY2()){case 6:default:return null;case 2:return;case 10:return!1;case 5:return!0;case 11:{let t=e._$KSTrY2();return t>127?t-256:t}case 3:{let t=e._$RpmQpp();return t>32767?t-65536:t}case 1:return e._$owHAGY();case 4:return e._$2aW3pU();case 8:return p?e._$rKsVWw(t,p):e._$3rfzLJ();case 0:return BigInt(e._$3rfzLJ());case 9:{let t=e._$3rfzLJ(),p=e._$3rfzLJ();return new RegExp(t,p)}case 7:{let t=e._$xoUAqC(),p=new m(t);for(let n=0;n<t;n++)p[n]=e._$KSTrY2();return ze(p)}}}me.prototype._$rKsVWw=function(e,t){for(var p,n=this._$xoUAqC(),i=this._$H8LmUo,r=this._$L69YlK,o=n,l=(t^2654435761*e)>>>0||1,a=0,u="";a<o;)if(l=((l=((l=(l^l<<13)>>>0)^l>>>17)>>>0)^l<<5)>>>0,a++,(p=i[r++]^255&l)<128)u+=L(p);else if(p<224)u+=L((31&p)<<6|63&(l=((l=((l=(l^l<<13)>>>0)^l>>>17)>>>0)^l<<5)>>>0,a++,i[r++]^255&l));else if(p<240)u+=L((15&p)<<12|(63&(l=((l=((l=(l^l<<13)>>>0)^l>>>17)>>>0)^l<<5)>>>0,a++,i[r++]^255&l))<<6|63&(l=((l=((l=(l^l<<13)>>>0)^l>>>17)>>>0)^l<<5)>>>0,a++,i[r++]^255&l));else{var c=((7&p)<<18|(63&(l=((l=((l=(l^l<<13)>>>0)^l>>>17)>>>0)^l<<5)>>>0,a++,i[r++]^255&l))<<12|(63&(l=((l=((l=(l^l<<13)>>>0)^l>>>17)>>>0)^l<<5)>>>0,a++,i[r++]^255&l))<<6|63&(l=((l=((l=(l^l<<13)>>>0)^l>>>17)>>>0)^l<<5)>>>0,a++,i[r++]^255&l))-65536;u+=L(55296+(c>>10),56320+(1023&c))}return this._$L69YlK=r,u};let Ye=-1,Ce=-1,Ke=0;function Ge(e,t){return e===Ye&&t===Ce?Ke:(Ye=e,Ce=t,Ke=(Math.imul((e>>>0)+1,671307193)^Math.imul((t>>>0)+1,1311147)^671307193)>>>0)}function Ne(e,t){return(1|Ge(e,t))>>>0}function Fe(e,t){return Math.imul(Ge(e,t),63072793)+1231748739>>>0}function ze(e){let t;if(e&&void 0!==e._$L69YlK)t=e;else{let p="string"==typeof e?function(e){for(var t=61===e.charCodeAt(e.length-1)?61===e.charCodeAt(e.length-2)?2:1:0,p=(3*e.length>>2)-t,n=new m(p),i=0,r=0;r<e.length;r+=4){var o=Le[e.charCodeAt(r)],l=Le[e.charCodeAt(r+1)],a=Le[e.charCodeAt(r+2)],u=Le[e.charCodeAt(r+3)];n[i++]=o<<2|l>>4,i<p&&(n[i++]=(15&l)<<4|a>>2),i<p&&(n[i++]=(3&a)<<6|u)}return n}(e):e;t=new me(p)}t._$KSTrY2();let p=(3245209536^t._$LJakvF())>>>0,n=t._$xoUAqC(),i=t._$xoUAqC(),r=[void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0,void 0],o=Ne(n,i),l=Fe(n,i);if(r[32]=n,r[33]=i,2&p){let e=t._$xoUAqC(),p={};for(let n=0;n<e;n++){let e=t._$xoUAqC(),n=t._$xoUAqC();p[e]=n}r[22*o+l&31]=p}2097152&p&&(r[10*o+l&31]=t._$LJakvF()),256&p&&(r[8*o+l&31]=t._$LJakvF()),32768&p&&(r[4*o+l&31]=t._$LJakvF()),524288&p&&(r[15*o+l&31]=t._$xoUAqC()),16384&p&&(r[20*o+l&31]=t._$LJakvF()),32&p&&(r[6*o+l&31]=t._$LJakvF()),4096&p&&(r[18*o+l&31]=t._$xoUAqC()),131072&p&&(r[21*o+l&31]=t._$xoUAqC()),8192&p&&(r[1*o+l&31]=1),4194304&p&&(r[9*o+l&31]=1),64&p&&(r[17*o+l&31]=1),4&p&&(r[25*o+l&31]=1),1&p&&(r[14*o+l&31]=1),1048576&p&&(r[11*o+l&31]=1),8&p&&(r[19*o+l&31]=1),262144&p&&(r[2*o+l&31]=1),2048&p&&(r[24*o+l&31]=1),65536&p&&(r[0*o+l&31]=1);let a=t._$xoUAqC(),u={__proto__:null,length:a},c=r[8*o+l&31]||0;for(let e=0;e<a;e++)u[e]=xe(t,e,c);function d(e){switch(e._$KSTrY2()){case 6:default:return-1;case 11:{let t=e._$KSTrY2();return t>127?t-256:t}case 3:{let t=e._$RpmQpp();return t>32767?t-65536:t}case 1:return e._$owHAGY();case 4:return 0|e._$2aW3pU();case 8:return 0|e._$3rfzLJ()}}r[7*o+l&31]=u;let f=t._$xoUAqC(),s=!!(128&p),j=s?3*f:f<<1;if(f<0||j<0)throw new RangeError("Invalid array length");let U={__proto__:null,length:j},I=0;if(s){let e=r[5*o+l&31]<=128;for(let p=0;p<f;p++){U[I++]=t._$xoUAqC(),U[I++]=d(t);let p,n=0,i=0;do{p=t._$KSTrY2(),n|=(127&p)<<i,i+=7}while(p>=128);n>>>=0,U[I++]=e?(127&n)<<20|(n>>>7&127)<<10|n>>>14&127:(4095&n)<<20|(n>>>12&1023)<<10|n>>>22&1023}}else{switch((27703*n^41121*i^51333*f^58839*a)>>>0&3){case 1:for(let e=0;e<f;e++)U[I++]=t._$xoUAqC(),U[I++]=d(t);break;case 2:for(let e=0;e<f;e++)U[I++]=t._$xoUAqC();for(let e=0;e<f;e++)U[I++]=d(t);break;case 3:for(let e=0;e<f;e++)U[I++]=d(t),U[I++]=t._$xoUAqC();break;default:for(let e=0;e<f;e++)U[I++]=d(t);for(let e=0;e<f;e++)U[I++]=t._$xoUAqC()}}if(r[23*o+l&31]=U,1024&p){let e=t._$xoUAqC(),p={};for(let n=0;n<e;n++){let e=t._$xoUAqC(),n=t._$xoUAqC();p[e]=n}r[16*o+l&31]=p}if(512&p){let e=t._$xoUAqC(),p={};for(let n=0;n<e;n++){let e=t._$xoUAqC(),n=t._$xoUAqC()-1,i=t._$xoUAqC()-1,r=t._$xoUAqC()-1;p[e]=[n,i,r]}r[3*o+l&31]=p}return r}let Pe=function(e,t){let p={};return function(n){if(void 0!==t&&(!(n<t)||n<0))throw 0;let i=n;if(p[i])return p[i];let r=e[i];return p[i]="string"==typeof r?ze(r):r,p[i]}},Re=Pe(k);k=null;let Ee=Pe(W,void 0);W=null;let Ae=function(e,t,p,n,i,r,o){this.a=!1,this.v=void 0,this.s=Je,this.f=void 0,this.b=e,this.g=t,this.e=p,this.c=n,this.n=i,this.h=r,this.t=o};Ae.prototype={__proto__:null};let Je=function(e,t){u._$1H5a1H=this.h;let p,n=this;try{p=$e(n.b,n.n,n.t,n.e,n.c,n.g,n.f,e,t)}catch(e){throw e}if(p&&"object"==typeof p&&void 0!==p._$NrOCg5){if(1!==p._$NrOCg5)throw new Error("Unexpected yield in async context");n.f=p._$OaZPeY,n.a=!0,n.v=p._$vvdbXE}else n.a=!1,n.v=p},Me=function(e,t,p,n,i,r,o){let l,a,u;0;try{l="object"==typeof t?void 0!==t.n?t.d||(t.d=Ee(t.n)):t:Re(t),a=l?Ne(l[32],l[33]):void 0,u=l?Fe(l[32],l[33]):void 0}catch(e){throw e}let c,d=new Ae(l,o,i,r,p,e,n);try{c=$e(l,0,n,i,r,o)}catch(e){throw e}if(c&&"object"==typeof c&&void 0!==c._$NrOCg5){if(1!==c._$NrOCg5)throw new Error("Unexpected yield in async context");d.f=c._$OaZPeY,d.a=!0,d.v=c._$vvdbXE}else d.a=!1,d.v=c;return d},He=function(e,t,p,n){this.f=e,this.r=t,this.m=p,this.o=n};He.prototype={__proto__:null};let Ve=function(e,t,p,n,i,r,l){let a,c,d;0;try{a="object"==typeof t?void 0!==t.n?t.d||(t.d=Ee(t.n)):t:Re(t),c=a?Ne(a[32],a[33]):void 0,d=a?Fe(a[32],a[33]):void 0}finally{0}let f=function(e,t,p,n,i,r){let o,l=0,a=function(t,a){if(2===l)throw new TypeError("Generator is already running");if(3===l||0===l&&1!==t){if(l=3,2===t)throw a;return{value:3===t?a:void 0,done:!0}}let u,c=1===l;l=2;try{u=c?$e(e,0,p,n,i,r,o,t,a):$e(e,0,p,n,i,r)}catch(e){throw l=3,o=void 0,e}finally{0}return u&&"object"==typeof u&&void 0!==u._$NrOCg5?(o=u._$OaZPeY,l=1,{value:u,done:!1}):(l=3,o=void 0,{value:u,done:!0})};return{next:function(e){return e&&"object"==typeof e&&4===e._$NrOCg5?a(3,e._$vvdbXE):a(1,e)},throw:function(e){return a(2,e)},return:function(e){if(2===l)throw new TypeError("Generator is already running");return l=3,o=void 0,{value:e,done:!0}}}}(a,0,n,i,r,l),s=a&&a[17*c+d&31]&&!a[11*c+d&31],j=null;s&&(j=f.next());let U,I=!1,h=!1,y=null,v=!1;function w(t,p){if(I)return{value:void 0,done:!0};if(h=!0,u._$1H5a1H=e,y){let e,n,i;try{if(p){if("function"!=typeof y.throw)throw"function"==typeof y.return&&y.return(),y=null,new TypeError("The iterator does not provide a 'throw' method.");e=y.throw(t)}else e=y.next(t);try{Te(e)}catch(e){throw y=null,e}let r=qe(e);n=r.done,i=r.value}catch(e){y=null;try{return S(f.throw(e))}catch(e){throw I=!0,e}}if(!n)return e;y=null,t=i,p=!1}let n;if(null!==j)n=j,j=null;else try{n=p?f.throw(t):f.next(t)}catch(e){throw I=!0,e}return S(n)}function S(e){if(e.done)return I=!0,v=!1,{value:e.value,done:!0};let t=e.value;if(2===t._$NrOCg5)return{value:t._$vvdbXE,done:!1};if(3===t._$NrOCg5){let e,p,n,i,r=t._$vvdbXE;try{if(null==r)throw new TypeError(r+" is not iterable");let t=r[Symbol.iterator];if("function"!=typeof t)throw new TypeError(r+" is not iterable");if(e=o(t,r,[]),Te(e),"function"!=typeof e.next)throw new TypeError("Iterator next is not a function")}catch(e){try{return S(f.throw(e))}catch(e){throw I=!0,e}}try{p=e.next(void 0),Te(p);let t=qe(p);n=t.done,i=t.value}catch(e){try{return S(f.throw(e))}catch(e){throw I=!0,e}}return n?w(i,!1):(y=e,p)}throw new Error("Unexpected signal in generator")}let T=function(t){if(I)return{value:t,done:!0};if(!h)return I=!0,{value:t,done:!0};if(y){let e,p=!1;try{let n=y.return;"function"==typeof n&&(p=!0,e=o(n,y,[t]),Te(e))}catch(e){let t;y=null;try{t=f.throw(e)}catch(e){throw I=!0,e}return S(t)}if(p){let p,n;try{p=e.done}catch(e){let t;y=null;try{t=f.throw(e)}catch(e){throw I=!0,e}return S(t)}if(!p)return e;try{n=e.value}catch(e){let t;y=null;try{t=f.throw(e)}catch(e){throw I=!0,e}return S(t)}y=null,t=n}}let p;U=t,v=!0;try{u._$1H5a1H=e,p=f.next({_$NrOCg5:4,_$vvdbXE:t})}catch(e){throw I=!0,v=!1,e}return S(p)};if(a&&a[9*c+d&31]){let t={},n=function(t,p){return u._$1H5a1H=e,t?f.throw(p):f.next(p)},i=function(){let e=null!==j?j:n(!1,void 0);return j=null,e},l=async function*(e){null===e&&(e=i());let p=!1;for(;!e.done;){let i=e.value,r=i._$NrOCg5,o=i._$vvdbXE;if(1===r&&"_$FkMaKD"===o){p=!0,e=n(!1,void 0);continue}if(1===r&&p){p=!1;let i,r=!1;try{return o}catch(e){r=!0,i=e}finally{if(!r){let e=n(!1,{_$NrOCg5:4,_$vvdbXE:t}),p=e.done?e.value:yield*a(e);if(p!==t)return p}}e=n(!0,i);continue}if(1===r){let t;try{t=await o}catch(t){e=n(!0,t);continue}e=n(!1,t);continue}if(2!==r&&3!==r)throw new Error("Unexpected signal in async generator");let l,u=!1,c=!1;try{l=2===r?yield o:yield*o,c=!0}catch(e){l=e,u=!0,c=!0}finally{if(!c){let e=n(!1,{_$NrOCg5:4,_$vvdbXE:t}),p=e.done?e.value:yield*a(e);if(p!==t)return p}}e=n(u,l)}if(e.value===t)return t},a=function(e){return function(e){return{[Symbol.asyncIterator]:function(){return this},next:function(t){return o(Ie,e,[t])},return:function(t){return o(he,e,[t])},throw:function(t){return o(ye,e,[t])}}}(l(e))};return p?new He(i,n,t,a):(l.prototype=function(e,t){return e&&Se(e)?e:t}(r&&r.prototype,Ue),l(null))}return{next:function(e){return w(e,!1)},return:T,throw:function(e){if(I)throw e;return w(e,!0)},[Symbol.iterator]:function(){return this}}};I(D,"get",{__proto__:null,value:y}),I(D,"set",{__proto__:null,value:p}),I(D,"has",{__proto__:null,value:S}),I(Q,"add",{__proto__:null,value:_}),I(Q,"has",{__proto__:null,value:r});var Be=function(e,t,p,n,i,r){0;try{let o=Re(i),l=o?Ne(o[32],o[33]):void 0,a=o?Fe(o[32],o[33]):void 0,c=r;if(o&&o[17*l+a&31]){let t=u._$1H5a1H;return Ve(t,o,void 0,c,n,p,e)}if(o&&o[9*l+a&31]){return async function(e,t,p,n,i,r,o){let l=Me(e,t,p,n,i,r,o);for(;l.a;){let e,t=1;try{e=await l.v}catch(p){t=2,e=p}l.s(t,e)}return l.v}(u._$1H5a1H,o,t,c,n,p,e)}return p&&o&&function(e,t,p,n,i){if(e&&!t[9*n+i&31]&&!t[17*n+i&31]&&!t[1*n+i&31]&&!de(e)){if(p&&p._$jau7yv)return;ce(e,{_$weZYrR:t,_$hc5OH6:p,_$4yPW6T:t,_$R0rzu9:void 0})}}(p,o,n,l,a),ke(o,t,c,n,p,e)}finally{0}};return Be._$U9wD72=function(e,t){if(e){var p;0;try{p=Re(t)}finally{0}if(p){var n=Ne(p[32],p[33]),i=Fe(p[32],p[33]);p[9*n+i&31]||p[17*n+i&31]||p[1*n+i&31]||!de(e)&&ce(e,{_$weZYrR:t,_$hc5OH6:void 0,_$4yPW6T:p,_$R0rzu9:void 0})}}},Be}();U._$U9wD72(filterLangs,4),U._$U9wD72(saveKeys,11),U._$U9wD72(getValidKeys,13),U._$U9wD72(splitIntoChunks,16),U._$U9wD72(showResult,19),U._$U9wD72(setLoading,20),U._$U9wD72(updateCharCount,21),U._$U9wD72(escHtml,24),U._$U9wD72(eyeIcon,25),U._$U9wD72(eyeOffIcon,26),U._$U9wD72(trashIcon,27),delete U._$U9wD72;try{document,Object.defineProperty(a,"document",{get:function(){return document},set:function(e){document=e},configurable:!0})}catch(e){}try{setTimeout,Object.defineProperty(a,"setTimeout",{get:function(){return setTimeout},set:function(e){setTimeout=e},configurable:!0})}catch(e){}try{localStorage,Object.defineProperty(a,"localStorage",{get:function(){return localStorage},set:function(e){localStorage=e},configurable:!0})}catch(e){}try{JSON,Object.defineProperty(a,"JSON",{get:function(){return JSON},set:function(e){JSON=e},configurable:!0})}catch(e){}try{fetch,Object.defineProperty(a,"fetch",{get:function(){return fetch},set:function(e){fetch=e},configurable:!0})}catch(e){}try{Math,Object.defineProperty(a,"Math",{get:function(){return Math},set:function(e){Math=e},configurable:!0})}catch(e){}try{Object.defineProperty(a,"Promise",{get:function(){return Promise},set:function(e){Promise=e},configurable:!0})}catch(e){}try{Error,Object.defineProperty(a,"Error",{get:function(){return Error},set:function(e){Error=e},configurable:!0})}catch(e){}try{navigator,Object.defineProperty(a,"navigator",{get:function(){return navigator},set:function(e){navigator=e},configurable:!0})}catch(e){}try{clearTimeout,Object.defineProperty(a,"clearTimeout",{get:function(){return clearTimeout},set:function(e){clearTimeout=e},configurable:!0})}catch(e){}a.trashIcon=trashIcon,a.eyeOffIcon=eyeOffIcon,a.eyeIcon=eyeIcon,a.escHtml=escHtml,a.showToast=showToast,a.copyResult=copyResult,a.updateCharCount=updateCharCount,a.setLoading=setLoading,a.showResult=showResult,a.callGemini=callGemini,a.doTranslate=doTranslate,a.splitIntoChunks=splitIntoChunks,a.checkAllKeys=checkAllKeys,a.updateStatus=updateStatus,a.getValidKeys=getValidKeys,a.renderKeys=renderKeys,a.saveKeys=saveKeys,a.toggleVisibility=toggleVisibility,a.updateKey=updateKey,a.removeKey=removeKey,a.addKey=addKey,a.filterLangs=filterLangs,a.selectLang=selectLang,a.closeDropdown=closeDropdown,a.toggleDropdown=toggleDropdown,a.buildLangList=buildLangList,u._$rx1ws9={__proto__:null,CHUNK_SIZE:!0,LANGS:!0,selectedLang:!0,keys:!0,currentKeyIndex:!0,toastTimer:!0},p=void 0;let I,h,y,v=0,w=!1;const S=[t=>{switch(t){case 0:return 3e3;case 1:return({}=(delete u._$rx1ws9.CHUNK_SIZE,0)),({}=(a.CHUNK_SIZE=CHUNK_SIZE,0)),({}=(c.CHUNK_SIZE=a.CHUNK_SIZE,0)),[["Arabic","العربية"],["English","الإنجليزية"],["French","الفرنسية"],["Spanish","الإسبانية"],["Portuguese","البرتغالية"],["German","الألمانية"],["Chinese","الصينية"],["Hindi","الهندية"],["Russian","الروسية"],["Japanese","اليابانية"],["Korean","الكورية"],["Indonesian","الإندونيسية"],["Thai","التايلاندية"],["Vietnamese","الفيتنامية"],["Malay","الماليزية"],["Filipino","الفلبينية"],["Bengali","البنغالية"],["Urdu","الأردية"],["Persian","الفارسية"],["Turkish","التركية"],["Dutch","الهولندية"],["Italian","الإيطالية"],["Polish","البولندية"],["Ukrainian","الأوكرانية"],["Romanian","الرومانية"],["Greek","اليونانية"],["Swedish","السويدية"],["Norwegian","النرويجية"],["Danish","الدنماركية"],["Finnish","الفنلندية"],["Czech","التشيكية"],["Hungarian","المجرية"],["Bulgarian","البلغارية"],["Serbian","الصربية"],["Croatian","الكرواتية"],["Slovak","السلوفاكية"],["Slovenian","السلوفينية"],["Lithuanian","الليتوانية"],["Latvian","اللاتفية"],["Estonian","الإستونية"],["Icelandic","الأيسلندية"],["Irish","الأيرلندية"],["Maltese","المالطية"],["Albanian","الألبانية"],["Macedonian","المقدونية"],["Bosnian","البوسنية"],["Armenian","الأرمينية"],["Georgian","الجورجية"],["Azerbaijani","الأذربيجانية"],["Kazakh","الكازاخية"],["Uzbek","الأوزبكية"],["Turkmen","التركمانية"],["Kyrgyz","القيرغيزية"],["Tajik","الطاجيكية"],["Mongolian","المنغولية"],["Nepali","النيبالية"],["Sinhala","السنهالية"],["Tamil","التاميلية"],["Burmese","البورمية"],["Khmer","الخميرية"],["Lao","اللاوية"],["Pashto","الباشتو"],["Kurdish","الكردية"],["Amharic","الأمهرية"],["Somali","الصومالية"],["Swahili","السواحيلية"],["Malagasy","الملغاشية"],["Kinyarwanda","الكينيارواندية"],["Kirundi","الكيروندية"],["Chichewa","الشيتشيوا"],["Tswana","التسوانية"],["Sesotho","السوتو"],["Swati","السواتي"],["Afrikaans","الأفريكانية"],["Maldivian","المالديفية"],["Dzongkha","الدزونغخا"],["Tetum","التتومية"],["Belarusian","البيلاروسية"],["Catalan","الكاتالانية"],["Luxembourgish","اللوكسمبورغية"],["Romansh","الرومانشية"],["Latin","اللاتينية"],["Guarani","الغواراني"],["Maori","الماورية"],["Tok Pisin","توك بيسين"],["Hiri Motu","هيري موتو"],["Fijian","الفيجية"],["Bislama","البيسلاما"],["Samoan","الساموية"],["Tongan","التونغية"],["Gilbertese","الجيلبرتية"],["Palauan","البالاوية"],["Marshallese","المارشالية"],["Nauruan","الناورو"],["Tuvaluan","توفالو"],["Tigrinya","التيغرينية"],["Sango","السانغو"],["Haitian Creole","الكريول الهايتي"],["Seychellois Creole","الكريول السيشيلية"]];case 2:return({}=(delete u._$rx1ws9.LANGS,0)),({}=(a.LANGS=LANGS,0)),({}=(c.LANGS=a.LANGS,0)),"";case 3:return({}=(delete u._$rx1ws9.selectedLang,0)),({}=(a.selectedLang=selectedLang,0)),({}=(c.selectedLang=a.selectedLang,0)),p=document.addEventListener("click",t=>U([t],void 0,void 0,{_$whFvHM:[closeDropdown],_$YbRseW:void 0,_$jau7yv:0},5,e,72)),[];case 4:return({}=(delete u._$rx1ws9.keys,0)),({}=(a.keys=keys,0)),({}=(c.keys=a.keys,0)),0;case 5:return({}=(delete u._$rx1ws9.currentKeyIndex,0)),({}=(a.currentKeyIndex=currentKeyIndex,0)),({}=(c.currentKeyIndex=a.currentKeyIndex,0)),void(p=function e(){return U(arguments,new.target,e,{_$whFvHM:[addKey,buildLangList,renderKeys,updateStatus],_$YbRseW:void 0,_$jau7yv:0},6,this,72)}());case 6:return({}=(delete u._$rx1ws9.toastTimer,0)),p}}];return(e,t)=>{if(!w){w=!0;try{if(void 0!==t){if(e!==v-1||!I)return;return y=y||{__proto__:null},t in y?y[t]:y[t]=I[t]()}return e===v&&v<=6?(I=void 0,y=void 0,h=void 0,6===v?S[v>>6](v++):h=S[v>>6](v++)):e===v-1?h:void 0}finally{w=!1}}}}(this,"undefined"==typeof arguments),CHUNK_SIZE=vmkj_171023(0),LANGS=vmkj_171023(1);let selectedLang=vmkj_171023(2),keys=vmkj_171023(3),currentKeyIndex=vmkj_171023(4),toastTimer=vmkj_171023(5);vmkj_171023(6)</script>
